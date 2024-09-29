@@ -5,6 +5,24 @@
 
 
 
+
+
+## 兴趣爱好
+
+- 一个臭爱看动漫的，入坑作 [只有我不存在的城市](https://bgm.tv/subject/137722)；心目中的[神作](https://bgm.tv/anime/list/yhoauann/collect?tag=%E7%A5%9E%E4%BD%9C)。
+- 一个臭爱玩游戏的，喜欢的类型有开放世界 ARPG，SLG；心目中的[神作](https://bgm.tv/game/list/yhoauann/collect?tag=%E7%A5%9E%E4%BD%9C)。
+- 一个臭爱听音乐的，喜欢的风格有Rock，Pure，JPop，最喜欢的音乐人是 ZARD
+
+
+
+## 我的设备
+
+- iPhone XS（2023~）
+- Logitech G304 （2023~）
+- 组装键盘 （2023~）
+- ~~联想扬天 S550-14 （2020~2023）~~
+- 组装小主机（ RX590 GME +  E5-2666 V3 + 16GB + 512GB）（2023~）
+
 ## 联系方式
 
 [Mail](Mailto:yhoauann@gmail.com)
