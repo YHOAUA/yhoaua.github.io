@@ -1,0 +1,23 @@
+---
+const quotes = [
+  { text: "我们所经历的每个平凡的日常，也许就是连续发生的奇迹", source: "《日常》", author: "笹原幸治郎", date: "2024年8月30日" },
+  { text: "你不愿意种花，你说，我不愿看见它一点点凋落", source: "《避兔》", author: "顾城", date: "2024年8月30日" },
+  { text: "一切有为法，如梦幻泡影，如露亦如电，应作如是观", source: "《金刚经》", author: "释迦牟尼", date: "2024年8月30日" },
+  { text: "古今多少事，都付笑谈中", source: "《临江仙·滚滚长江东逝水》", author: "杨慎", date: "2024年8月29日" },
+  // 其他名言...
+];
+---
+
+
+
+    <div class="container">
+      <h1>一言</h1>
+      {quotes.map((quote) => (
+        <div class="quote-card" data-color={quote.color}>
+          <div class="quote-text">{quote.text}</div>
+          <div class="quote-source">作者： {quote.author}，出自：{quote.source}</div>
+          <div class="quote-date">发表于 {quote.date}</div>
+        </div>
+      ))}
+    </div>
+

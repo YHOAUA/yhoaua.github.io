@@ -1,0 +1,191 @@
+---
+const quotes = [
+  {
+    text: "我们所经历的每个平凡的日常，也许就是连续发生的奇迹",
+    author: "笹原幸治郎",
+    source: "《日常》",
+    date: "2024年8月30日 星期五",
+    color: "#e91e63"
+  },
+  {
+    text: "你不愿意种花，你说，我不愿看见它一点点凋落。是的，为了避免结束，你避免了一切开始",
+    author: "顾城",
+    source: "《避兔》",
+    date: "2024年8月30日 星期五",
+    color: "#f06292"
+  },
+  {
+    text: "一切有为法，如梦幻泡影，如露亦如电，应作如是观",
+    author: "释迦牟尼",
+    source: "《金刚经》",
+    date: "2024年8月30日 星期五",
+    color: "#f48fb1"
+  },
+  {
+    text: "古今多少事，都付笑谈中",
+    author: "杨慎",
+    source: "《临江仙·滚滚长江东逝水》",
+    date: "2024年8月29日 星期四",
+    color: "#ffab91"
+  },
+  {
+    text: "战争即和平，自由即奴役，无知即力量",
+    author: "乔治·奥威尔",
+    source: "《一九八四》",
+    date: "2024年8月28日 星期三",
+    color: "#ff7043"
+  },
+  {
+    text: "重要的东西用眼睛看不见，只有用心才能看得清楚",
+    author: "安托万·德圣埃克絮佩里",
+    source: "《小王子》",
+    date: "2024年8月30日 星期五",
+    color: "#aed581"
+  },
+  {
+    text: "那些听不见音乐的人以为跳舞的人疯了",
+    author: "弗里德里希·尼采",
+    source: "《上帝死了》",
+    date: "2024年8月29日 星期四",
+    color: "#4db6ac"
+  },
+  {
+    text: "天下熙熙，皆为利来；天下攘攘，皆为利往",
+    author: "司马迁",
+    source: "《史记》",
+    date: "2024年8月29日 星期四",
+    color: "ffab91"
+  },
+  {
+    text: "不管你是在研究什么事物，还是在思考任何观点，只问你自己，事实是什么，以及这些事实所证实的真理是什么。永远不要让自己被自己所更愿意相信的，或者认为人们相信了会对社会更加有益的东西所影响。只是单单地去审视，什么才是事实。",
+    author: "罗素",
+    source: "《BBC采访》",
+    date: "2024年8月30日 星期五",
+    color: "#aed581"
+  },
+  {
+    text: "娱乐至死的可怕之处不在于娱乐本身，而在于人们日渐失去对社会事务进行严肃思考和理智判断的能力，在于被轻佻的文化环境养成了既无知且无畏的理性文盲而不自知。",
+    author: "尼尔·波兹曼",
+    source: "《娱乐至死》",
+    date: "2024年8月30日 星期五",
+    color: "#6CBDE5"
+  }
+];
+---
+
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>名言页面</title>
+    <style>
+      .body {
+        height: 100vh;
+        font-family: 'Arial', sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+      }
+    
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        display: flex; /* 使用 flex 布局 */
+        flex-wrap: wrap; /* 允许换行 */
+        gap: 20px; /* 卡片间距 */
+        align-items: flex-start; /* 顶部对齐，允许不对齐 */
+      }
+    
+      h1 {
+        text-align: center;
+        font-size: 1.5rem; /* 字体大小 */
+        color: #333;
+        margin-bottom: 20px;
+        width: 100%; /* 让标题占满整行 */
+        font-weight: bold; /* 设置标题为粗体 */
+      }
+    
+      .quote-card {
+        flex: 0 1 calc(50% - 20px); /* 每个卡片占50%的宽度，减去间距 */
+        box-sizing: border-box; /* 包含padding和border */
+        border-left: 5px solid;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        display: block; /* 使用 block 布局 */
+        max-width: 100%; /* 确保卡片不会超出容器宽度 */
+        /* 不强制对齐 */
+      }
+    
+      .quote-text {
+        font-size: 1rem; /* 调整字体大小 */
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+      }
+    
+      .quote-source {
+        font-size: 0.8rem; /* 调整字体大小 */
+        color: #888;
+      }
+    
+      .quote-date {
+        font-size: 0.7rem; /* 调整字体大小 */
+        color: #bbb;
+      }
+    
+      .quote-card[data-color="#e91e63"] {
+        border-color: #e91e63;
+      }
+    
+      .quote-card[data-color="#f06292"] {
+        border-color: #f06292;
+      }
+    
+      .quote-card[data-color="#f48fb1"] {
+        border-color: #f48fb1;
+      }
+    
+      .quote-card[data-color="#ffab91"] {
+        border-color: #ffab91;
+      }
+    
+      .quote-card[data-color="#ff7043"] {
+        border-color: #ff7043;
+      }
+    
+      .quote-card[data-color="#aed581"] {
+        border-color: #aed581;
+      }
+    
+      .quote-card[data-color="#4db6ac"] {
+        border-color: #4db6ac;
+      }
+      .quote-card[data-color="#6CBDE5"] {
+        border-color: #6CBDE5;
+      }
+    </style>
+    
+
+  </head>
+  <body>
+    <div class="body">
+    <div class="container">
+      <h1>一言</h1>
+      {quotes.map((quote) => (
+        <div class="quote-card" data-color={quote.color}>
+          <div class="quote-text">{quote.text}</div>
+          <div class="quote-source">作者： {quote.author}，出自：{quote.source}</div>
+          <div class="quote-date">发表于 {quote.date}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+  </body>
+</html>
