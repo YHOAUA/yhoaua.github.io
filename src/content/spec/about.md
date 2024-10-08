@@ -9,8 +9,8 @@
 
 ## 兴趣爱好
 
-- 一个臭爱看动漫的，入坑作 [只有我不存在的城市](https://bgm.tv/subject/137722)；最爱的动漫工作室是京阿尼，心目中的[神作](https://bgm.tv/anime/list/yhoauann/collect?tag=%E7%A5%9E%E4%BD%9C)。
-- 一个臭爱玩游戏的，喜欢的类型有开放世界 ARPG，SLG；最爱的游戏公司是任天堂，心目中的[神作](https://bgm.tv/game/list/yhoauann/collect?tag=%E7%A5%9E%E4%BD%9C)。
+- 一个臭爱看动漫的，入坑作 [只有我不存在的城市](https://bgm.tv/subject/137722) ；最爱的动漫工作室是京阿尼，心目中的 [神作](https://bgm.tv/anime/list/yhoauann/collect?tag=%E7%A5%9E%E4%BD%9C) 。
+- 一个臭爱玩游戏的，喜欢的类型有开放世界 ARPG，SLG；最爱的游戏公司是任天堂，心目中的 [神作](https://bgm.tv/game/list/yhoauann/collect?tag=%E7%A5%9E%E4%BD%9C) 。
 - 一个臭爱听音乐的，喜欢的风格有Rock，Pure，JPop，最喜欢的音乐人是 ZARD
 
 
