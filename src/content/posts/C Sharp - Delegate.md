@@ -3,7 +3,7 @@ title: C# 委托
 published: 2024-05-01
 description: ''
 image: ''
-tags: [C#]
+tags: [C Sharp]
 category: '编程'
 draft: false 
 ---
