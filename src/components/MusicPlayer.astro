@@ -1,0 +1,72 @@
+---
+// MusicPlayer.astro
+---
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐</title>
+    <link rel="icon" href="/favicon/icon.png" sizes="32x32" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@latest/dist/Meting.min.js" defer></script>
+    <style>
+        .body {
+            font-family: 'Arial', sans-serif;
+            background-color: #EAEFF5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .container p {
+            font-size: 16px;
+            color: #666;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+<div class="container">
+
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="8282573592"
+        autoplay="true"
+        order="random">
+    </meting-js>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 这里可以进行初始化或其他设置
+    });
+</script>
+</div>
+</body>
+</html>
