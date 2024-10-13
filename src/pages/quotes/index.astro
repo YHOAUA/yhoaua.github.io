@@ -1,59 +1,51 @@
 ---
 const quotes = [
   {
+    text: "战争即和平，自由即奴役，无知即力量",
+    author: "乔治·奥威尔",
+    source: "《一九八四》",
+    color: "#53A3F2"
+  }, 
+  {
     text: "我们所经历的每个平凡的日常，也许就是连续发生的奇迹",
     author: "笹原幸治郎",
     source: "《日常》",
-    date: "2024年8月30日 星期五",
     color: "#53A3F2"
   },
   {
     text: "你不愿意种花，你说，我不愿看见它一点点凋落。是的，为了避免结束，你避免了一切开始",
     author: "顾城",
     source: "《避免》",
-    date: "2024年8月30日 星期五",
-    color: "#53A3F2"
-  },
-  {
-    text: "战争即和平，自由即奴役，无知即力量",
-    author: "乔治·奥威尔",
-    source: "《一九八四》",
-    date: "2024年8月28日 星期三",
     color: "#53A3F2"
   },
   {
     text: "重要的东西用眼睛看不见，只有用心才能看得清楚",
     author: "安托万·德圣埃克絮佩里",
     source: "《小王子》",
-    date: "2024年8月30日 星期五",
     color: "#53A3F2"
   },
   {
     text: "那些听不见音乐的人以为跳舞的人疯了",
     author: "弗里德里希·尼采",
     source: "《上帝死了》",
-    date: "2024年8月29日 星期四",
     color: "#53A3F2"
   },
   {
     text: "不管你是在研究什么事物，还是在思考任何观点，只问你自己，事实是什么，以及这些事实所证实的真理是什么。永远不要让自己被自己所更愿意相信的，或者认为人们相信了会对社会更加有益的东西所影响。只是单单地去审视，什么才是事实。",
     author: "罗素",
     source: "《BBC采访》",
-    date: "2024年8月30日 星期五",
     color: "#53A3F2"
   },
   {
     text: "娱乐至死的可怕之处不在于娱乐本身，而在于人们日渐失去对社会事务进行严肃思考和理智判断的能力，在于被轻佻的文化环境养成了既无知且无畏的理性文盲而不自知。",
     author: "尼尔·波兹曼",
     source: "《娱乐至死》",
-    date: "2024年8月30日 星期五",
     color: "#53A3F2"
   }
 ];
 ---
 
 <html lang="zh">
-  <!-- <link rel="stylesheet" href="https://unpkg.com/heti@0.9.4/umd/heti.min.css"> -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -163,7 +155,6 @@ const quotes = [
         <div class="quote-card" data-color={quote.color}>
           <div class="quote-text">{quote.text}</div>
           <div class="quote-source">作者： {quote.author}，出自：{quote.source}</div>
-          <div class="quote-date">发表于 {quote.date}</div>
         </div>
       ))}
       <hr/><hr>
