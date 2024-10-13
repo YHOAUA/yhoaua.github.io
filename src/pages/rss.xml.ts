@@ -12,13 +12,13 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: siteConfig.title,
-    description: siteConfig.subtitle || 'feedId:62664610321862656+userId:43887428480080896',
+    description: siteConfig.subtitle || 'No descripti',
     site: context.site ?? 'https://fuwari.vercel.app',
     items: blog.map(post => {
       return {
         title: post.data.title,
         pubDate: post.data.published,
-        description: post.data.description || '',
+        description: post.data.description || 'feedId:62664610321862656+userId:43887428480080896',
         link: `/posts/${post.slug}/`,
         content: sanitizeHtml(parser.render(post.body), {
           allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
