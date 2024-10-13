@@ -12,8 +12,8 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: siteConfig.title,
-    description: siteConfig.subtitle || 'No descripti',
-    site: context.site ?? 'This message is used to verify that this feed (feedId:62664610321862656) belongs to me (userId:43887428480080896). Join me in enjoying the next generation information browser https://follow.is.',
+    description: siteConfig.subtitle || 'This message is used to verify that this feed (feedId:62664610321862656) belongs to me (userId:43887428480080896). Join me in enjoying the next generation information browser https://follow.is.',
+    site: context.site ?? '',
     items: blog.map(post => {
       return {
         title: post.data.title,
