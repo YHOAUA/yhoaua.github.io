@@ -49,6 +49,11 @@ export const navBarConfig: NavBarConfig = {
       external: true,                               // Show an external link icon and will open in a new tab
     },
     {
+      name: '说说',
+      url: 'https://broadcastchannel-e7f.pages.dev/',     // Internal links should not include the base path, as it is automatically added
+      external: true,                               // Show an external link icon and will open in a new tab
+    },
+    {
       name: '听歌',
       url: '/Music/',     // Internal links should not include the base path, as it is automatically added
       external: true,                               // Show an external link icon and will open in a new tab
@@ -63,9 +68,7 @@ export const profileConfig: ProfileConfig = {
   links: [
     {
       name: 'Twitter',
-      icon: 'fa6-brands:twitter',       // Visit https://icones.js.org/ for icon codes
-                                        // You will need to install the corresponding icon set if it's not already included
-                                        // `pnpm add @iconify-json/<icon-set-name>`
+      icon: 'fa6-brands:twitter',  
       url: 'https://twitter.com/yhoaua',
     },
     {
