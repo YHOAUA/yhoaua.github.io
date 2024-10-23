@@ -1,0 +1,137 @@
+---
+// MusicPlayer.astro
+---
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZARD</title>
+    <link rel="icon" href="/favicon/icon.png" sizes="32x32" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@latest/dist/Meting.min.js" defer></script>
+    
+    <style>
+        .body {
+            font-family: 'Arial', sans-serif;
+            background-color: #EAEFF5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .container p {
+            font-size: 16px;
+            color: #666;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+            
+<div class="container">
+    
+    <!-- APlayer container -->
+    <div id="aplayer"></div>
+
+    <!-- APlayer JavaScript -->
+    <script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+                audio: 
+                [
+                    {
+                        name: '運命のルーレット廻して',
+                        artist: 'ZARD',
+                        url: '/music/01_ZARD - 運命のルーレット廻して.flac',
+                        cover: '/music/01_ZARD - 運命のルーレット廻して.jpg',
+                    },
+                    {
+                        name: 'Dont you see!',
+                        artist: 'ZARD',
+                        url: '/music/01_ZARD - Dont you see!.flac',
+                        cover: '/music/01_ZARD - Dont you see!.jpg',
+                    },
+                    {
+                        name: '遠い星を数えて',
+                        artist: 'ZARD',
+                        url: '/music/ZARD - 遠い星を数えて (数着远方的星星).flac',
+                        cover: '/music/ZARD - 遠い星を数えて (数着远方的星星).jpg',
+                    },
+                    {
+                        name: '少女の頃に戻ったみたいに',
+                        artist: 'ZARD',
+                        url: '/music/ZARD - 少女の頃に戻ったみたいに (仿佛回到少女时代).flac',
+                        cover: '/music/ZARD - 遠い星を数えて (数着远方的星星).jpg',
+                    },
+                    {
+                        name: '遠い日のNostalgia',
+                        artist: 'ZARD',
+                        url: '/music/ZARD - 遠い日のNostalgia.flac',
+                        cover: '/music/ZARD - 遠い日のNostalgia.jpg',
+                    },
+                    {
+                        name: 'Good-bye My Loneliness',
+                        artist: 'ZARD',
+                        url: '/music/ZARD - Good-bye My Loneliness.flac',
+                        cover: '/music/ZARD - Good-bye My Loneliness.jpg',
+                    },
+                    {
+                        name: '永遠',
+                        artist: 'ZARD',
+                        url: '/music/ZARD - 永遠.flac',
+                        cover: '/music/ZARD - 遠い星を数えて (数着远方的星星).jpg',
+                    },
+                    {
+                        name: '揺れる想い',
+                        artist: 'ZARD',
+                        url: '/music/ZARD - 揺れる想い.flac',
+                        cover: '/music/ZARD - 揺れる想い.jpg',
+                    },
+                    {
+                        name: '息もできない',
+                        artist: 'ZARD',
+                        url: '/music/ZARD - 息もできない (无法呼吸).flac',
+                        cover: '/music/ZARD - 息もできない (无法呼吸).jpg',
+                    },
+                    {
+                        name: 'サヨナラ言えなくて',
+                        artist: 'ZARD',
+                        url: '/music/ZARD - サヨナラ言えなくて.flac',
+                        cover: '/music/ZARD - 遠い日のNostalgia.jpg',
+                    },
+                ]       
+        });
+        });
+</script>
+</div>
+</body>
+</html>
