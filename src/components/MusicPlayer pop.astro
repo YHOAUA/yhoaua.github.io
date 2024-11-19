@@ -15,7 +15,7 @@
     
     <style>
         .body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Lato', sans-serif;
             background-color: #EAEFF5;
             margin: 0;
             padding: 0;
@@ -31,7 +31,7 @@
             margin-bottom: 20px;
         }
         .container {
-            width: 100%;
+            width: 90%;
             max-width: 600px;
             padding: 20px;
             background-color: #fff;
@@ -66,19 +66,78 @@
     document.addEventListener('DOMContentLoaded', () => {
         const ap = new APlayer({
             container: document.getElementById('aplayer'),
+            lrcType: 3,
                 audio: 
                 [
                     {
                         name: 'YOSHIKI,Hyde',
                         artist: 'Red Swan',
-                        url: '/music/YOSHIKI,Hyde - Red Swan.flac',
-                        cover: '/music/YOSHIKI,Hyde - Red Swan.jpg',
+                        url: '/music/POP/YOSHIKI,Hyde - Red Swan.flac',
+                        cover: '/music/POP/YOSHIKI,Hyde - Red Swan.jpg',
+                        lrc: '/music/POP/YOSHIKI,Hyde - Red Swan.lrc',
                     },
                     {
                         name: 'Call of Silence',
                         artist: '澤野弘之、R!NGemie',
-                        url: '/music/Call of Silence - 澤野弘之、R!NGemie.flac',
-                        cover: '/music/Call of Silence - 澤野弘之、R!NGemie.jpg',
+                        url: '/music/POP/Call of Silence - 澤野弘之、R!NGemie.flac',
+                        cover: '/music/POP/Call of Silence - 澤野弘之、R!NGemie.jpg',
+                        lrc: '/music/POP/Call of Silence - 澤野弘之、R!NGemie.lrc',
+                    },
+                    {
+                        name: '悪魔の子',
+                        artist: 'ヒグチアイ',
+                        url: '/music/POP/悪魔の子 - ヒグチアイ.flac',
+                        cover: '/music/POP/悪魔の子 - ヒグチアイ.jpg',
+                        lrc: '/music/POP/悪魔の子 - ヒグチアイ.lrc',
+                    },
+                    {
+                        name: 'βios',
+                        artist: '小林未郁',
+                        url: '/music/POP/βios - 小林未郁.flac',
+                        cover: '/music/POP/βios - 小林未郁.jpg',
+                        lrc: '/music/POP/βios - 小林未郁.lrc',
+                    },
+                    {
+                        name: 'Wish My Life Away',
+                        artist: 'Kan R.Gao Laura Shigihara',
+                        url: '/music/POP/Wish_My_Life_Away-Kan_R._Gao Laura_Shigihara-HQ.flac',
+                        cover: '/music/POP/Wish_My_Life_Away-Kan_R._Gao Laura_Shigihara-HQ.jpg',
+                        lrc: '/music/POP/Wish_My_Life_Away-Kan_R._Gao Laura_Shigihara-HQ.lrc',
+                    },
+                    {
+                        name: '小さなてのひら',
+                        artist: 'riya',
+                        url: '/music/POP/riya - 小さなてのひら.flac',
+                        cover: '/music/POP/riya - 小さなてのひら.jpg',
+                        lrc: '/music/POP/riya - 小さなてのひら.lrc',
+                    },
+                    {
+                        name: 'Name of Love',
+                        artist: 'cinema staff',
+                        url: '/music/POP/Name of Love - cinema staff.flac',
+                        cover: '/music/POP/Name of Love - cinema staff.jpg',
+                        lrc: '/music/POP/Name of Love - cinema staff.lrc',
+                    },
+                    {
+                        name: 'Call your name Gv',
+                        artist: '澤野弘之、R!NGemie',
+                        url: '/music/POP/Call your name Gv - 澤野弘之、R!NGemie.flac',
+                        cover: '/music/POP/Call your name Gv - 澤野弘之、R!NGemie.jpg',
+                        lrc: '/music/POP/Call your name Gv - 澤野弘之、R!NGemie.lrc',
+                    },
+                    {
+                        name: 'CBefore my body is dry BEST OF VOCAL WORKS',
+                        artist: '小林未郁 David_W.',
+                        url: '/music/POP/Before_my_body_is_dry_BEST_OF_VOCAL_WORKS_nZk_小林未郁_David_W.flac',
+                        cover: '/music/POP/Before_my_body_is_dry_BEST_OF_VOCAL_WORKS_nZk_小林未郁_David_W.jpg',
+                        lrc: '/music/POP/Before_my_body_is_dry_BEST_OF_VOCAL_WORKS_nZk_小林未郁_David_W.lrc',
+                    },
+                    {
+                        name: 'Avid',
+                        artist: 'awanoHiroyuki[nZk]、瑞葵(mizuki)',
+                        url: '/music/POP/Avid - SawanoHiroyuki[nZk]、瑞葵(mizuki).flac',
+                        cover: '/music/POP/Avid - SawanoHiroyuki[nZk]、瑞葵(mizuki).jpg',
+                        lrc: '/music/POP/Avid - SawanoHiroyuki[nZk]、瑞葵(mizuki).lrc',
                     },
                 ]       
         });

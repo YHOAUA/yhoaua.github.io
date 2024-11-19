@@ -1,0 +1,148 @@
+---
+// MusicPlayer.astro
+---
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCK</title>
+    <link rel="icon" href="/favicon/icon.png" sizes="32x32" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@latest/dist/Meting.min.js" defer></script>
+    
+    <style>
+        .body {
+            font-family: 'Arial', sans-serif;
+            background-color: #EAEFF5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .container p {
+            font-size: 16px;
+            color: #666;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+            
+<div class="container">
+    
+    <!-- APlayer container -->
+    <div id="aplayer"></div>
+
+    <!-- APlayer JavaScript -->
+    <script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            lrcType: 3,
+                audio: 
+                [
+                    {
+                        name: 'Wish You Were Here',
+                        artist: 'Pink Floyd',
+                        url: '/music/ROCK/Wish You Were Here - Pink Floyd.flac',
+                        cover: '/music/ROCK/Wish You Were Here - Pink Floyd.jpg',
+                        lrc: '/music/ROCK/Wish You Were Here - Pink Floyd.lrc',
+                    },
+                    {
+                        name: 'Wake Me up When September Ends',
+                        artist: 'Green Day',
+                        url: '/music/ROCK/Wake Me up When September Ends - Green Day.flac',
+                        cover: '/music/ROCK/Wake Me up When September Ends - Green Day.jpg',
+                        lrc: '/music/ROCK/Wake Me up When September Ends - Green Day.lrc',
+                    },
+                    {
+                        name: 'Tender',
+                        artist: 'Blur',
+                        url: '/music/ROCK/Tender - Blur.flac',
+                        cover: '/music/ROCK/Tender - Blur.png',
+                        lrc: '/music/ROCK/Tender - Blur.lrc',
+                    },
+                    {
+                        name: 'Seasons In The Sun',
+                        artist: 'Nirvana',
+                        url: '/music/ROCK/Seasons In The Sun - Nirvana.mp3',
+                        cover: '/music/ROCK/Seasons In The Sun - Nirvana.png',
+                        lrc: '/music/ROCK/Seasons In The Sun - Nirvana.lrc',
+                    },
+                    {
+                        name: 'No Surprises',
+                        artist: 'Radiohead',
+                        url: '/music/ROCK/Radiohead - No Surprises.flac',
+                        cover: '/music/ROCK/Radiohead - No Surprises.jpg',
+                        lrc: '/music/ROCK/Radiohead - No Surprises.lrc',
+                    },
+                    {
+                        name: 'Under Pressure (2011 Remaster)',
+                        artist: 'Queen,David Bowie',
+                        url: '/music/ROCK/Queen,David Bowie - Under Pressure (2011 Remaster).mp3',
+                        cover: '/music/ROCK/Queen,David Bowie - Under Pressure (2011 Remaster).jpg',
+                        lrc: '/music/ROCK/Queen,David Bowie - Under Pressure (2011 Remaster).lrc',  
+                    },
+                    {
+                        name: 'Wonderwall',
+                        artist: 'Oasis ',
+                        url: '/music/ROCK/Oasis - Wonderwall.flac',
+                        cover: '/music/ROCK/Oasis - Wonderwall.png',
+                        lrc: '/music/ROCK/Oasis - Wonderwall.lrc',
+                    },
+                    {
+                        name: 'Don t Look Back In Anger',
+                        artist: 'Oasis',
+                        url: '/music/ROCK/Oasis - Don t Look Back In Anger.flac',
+                        cover: '/music/ROCK/Oasis - Don t Look Back In Anger.jpg',
+                        lrc: '/music/ROCK/Oasis - Don t Look Back In Anger.lrc',
+                    },
+                    {
+                        name: 'Jets',
+                        artist: 'Blur',
+                        url: '/music/ROCK/Jets - Blur.flac',
+                        cover: '/music/ROCK/Jets - Blur.jpg',
+                        lrc: '/music/ROCK/Jets - Blur.lrc',
+                    },
+                    {
+                        name: 'Another Brick in the Wall, Pt. 2',
+                        artist: 'Pink Floyd',
+                        url: '/music/ROCK/Another Brick in the Wall, Pt. 2 - Pink Floyd.flac',
+                        cover: '/music/ROCK/Another Brick in the Wall, Pt. 2 - Pink Floyd.jpg',
+                        lrc: '/music/ROCK/Another Brick in the Wall, Pt. 2 - Pink Floyd.lrc',
+                    },
+                ]       
+        });
+        });
+</script>
+</div>
+</body>
+</html>

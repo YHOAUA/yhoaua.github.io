@@ -1,0 +1,137 @@
+---
+// MusicPlayer.astro
+---
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PURE</title>
+    <link rel="icon" href="/favicon/icon.png" sizes="32x32" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@latest/dist/Meting.min.js" defer></script>
+    
+    <style>
+        .body {
+            font-family: 'Arial', sans-serif;
+            background-color: #EAEFF5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .container p {
+            font-size: 16px;
+            color: #666;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+            
+<div class="container">
+    
+    <!-- APlayer container -->
+    <div id="aplayer"></div>
+
+    <!-- APlayer JavaScript -->
+    <script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+                audio: 
+                [
+                    {
+                        name: 'Wish You Were Here',
+                        artist: 'Pink Floyd',
+                        url: '/music/PURE/折戸伸治 - 東風-piano-.flac',
+                        cover: '/music/PURE/折戸伸治 - 東風-piano-.jpg',
+                    },
+                    {
+                        name: '町 時の流れ 人',
+                        artist: '折戸伸治 ',
+                        url: '/music/PURE/折戸伸治 - 町 時の流れ 人.flac',
+                        cover: '/music/PURE/折戸伸治 - 町 時の流れ 人.jpg',
+                    },
+                    {
+                        name: '海の形',
+                        artist: '昙轩',
+                        url: '/music/PURE/昙轩 - 海の形.flac',
+                        cover: '/music/PURE/昙轩 - 海の形.png',
+                    },
+                    {
+                        name: '夜の向日葵',
+                        artist: '松本文紀',
+                        url: '/music/PURE/松本文紀 - 夜の向日葵 (夜里的向日葵).flac',
+                        cover: '/music/PURE/松本文紀 - 夜の向日葵 (夜里的向日葵).jpg',
+                    },
+                    {
+                        name: 'Yuri on ICE',
+                        artist: '梅林太郎 ',
+                        url: '/music/PURE/梅林太郎 - Yuri on ICE.flac',
+                        cover: '/music/PURE/梅林太郎 - Yuri on ICE.jpg',
+                    },
+                    {
+                        name: '渚',
+                        artist: '麻枝准,Key Sounds Label',
+                        url: '/music/PURE/麻枝准,Key Sounds Label - 渚.mp3',
+                        cover: '/music/PURE/麻枝准,Key Sounds Label - 渚.jpg',
+                    },
+                    {
+                        name: 'Last Train Home - Still Far',
+                        artist: '麗美  ',
+                        url: '/music/PURE/麗美 - Last Train Home - Still Far.flac',
+                        cover: '/music/PURE/麗美 - Last Train Home - Still Far.jpg',
+                    },
+                    {
+                        name: '弟みたいな存在 PianoSolo',
+                        artist: '横山克',
+                        url: '/music/PURE/横山克 - 弟みたいな存在 PianoSolo.flac',
+                        cover: '/music/PURE/横山克 - 弟みたいな存在 PianoSolo.jpg',
+                    },
+                    {
+                        name: 'あの日の夢 ',
+                        artist: '百石元',
+                        url: '/music/PURE/あの日の夢 - 百石元.flac',
+                        cover: '/music/PURE/あの日の夢 - 百石元.jpg',
+                    },
+                    {
+                        name: 'Bloom of Youth',
+                        artist: '清水淳一、Key Sounds Label',
+                        url: '/music/PURE/Bloom of Youth - 清水淳一、Key Sounds Label.flac',
+                        cover: '/music/PURE/Bloom of Youth - 清水淳一、Key Sounds Label.png',
+                    },
+                ]       
+        });
+        });
+</script>
+</div>
+</body>
+</html>

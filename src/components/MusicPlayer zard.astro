@@ -25,13 +25,8 @@
             height: 100vh;
             flex-direction: column;
         }
-        h2 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
-        }
         .container {
-            width: 100%;
+            width: 90%;
             max-width: 600px;
             padding: 20px;
             background-color: #fff;
@@ -63,70 +58,84 @@
 </div>
 
 <script>
+import { loadRenderers } from "astro:container";
+
     document.addEventListener('DOMContentLoaded', () => {
         const ap = new APlayer({
             container: document.getElementById('aplayer'),
+            lrcType: 3,
                 audio: 
                 [
                     {
-                        name: '運命のルーレット廻して',
-                        artist: 'ZARD',
-                        url: '/music/01_ZARD - 運命のルーレット廻して.flac',
-                        cover: '/music/01_ZARD - 運命のルーレット廻して.jpg',
-                    },
-                    {
-                        name: 'Dont you see!',
-                        artist: 'ZARD',
-                        url: '/music/01_ZARD - Dont you see!.flac',
-                        cover: '/music/01_ZARD - Dont you see!.jpg',
-                    },
-                    {
-                        name: '遠い星を数えて',
-                        artist: 'ZARD',
-                        url: '/music/ZARD - 遠い星を数えて (数着远方的星星).flac',
-                        cover: '/music/ZARD - 遠い星を数えて (数着远方的星星).jpg',
-                    },
-                    {
-                        name: '少女の頃に戻ったみたいに',
-                        artist: 'ZARD',
-                        url: '/music/ZARD - 少女の頃に戻ったみたいに (仿佛回到少女时代).flac',
-                        cover: '/music/ZARD - 遠い星を数えて (数着远方的星星).jpg',
-                    },
-                    {
                         name: '遠い日のNostalgia',
                         artist: 'ZARD',
-                        url: '/music/ZARD - 遠い日のNostalgia.flac',
-                        cover: '/music/ZARD - 遠い日のNostalgia.jpg',
-                    },
-                    {
-                        name: 'Good-bye My Loneliness',
-                        artist: 'ZARD',
-                        url: '/music/ZARD - Good-bye My Loneliness.flac',
-                        cover: '/music/ZARD - Good-bye My Loneliness.jpg',
-                    },
-                    {
-                        name: '永遠',
-                        artist: 'ZARD',
-                        url: '/music/ZARD - 永遠.flac',
-                        cover: '/music/ZARD - 遠い星を数えて (数着远方的星星).jpg',
-                    },
-                    {
-                        name: '揺れる想い',
-                        artist: 'ZARD',
-                        url: '/music/ZARD - 揺れる想い.flac',
-                        cover: '/music/ZARD - 揺れる想い.jpg',
-                    },
-                    {
-                        name: '息もできない',
-                        artist: 'ZARD',
-                        url: '/music/ZARD - 息もできない (无法呼吸).flac',
-                        cover: '/music/ZARD - 息もできない (无法呼吸).jpg',
+                        url: '/music/ZARD/ZARD - 遠い日のNostalgia.flac',
+                        cover: '/music/ZARD/ZARD - 遠い日のNostalgia.jpg',
+                        lrc: '/music/ZARD/ZARD - 遠い日のNostalgia.lrc',
                     },
                     {
                         name: 'サヨナラ言えなくて',
                         artist: 'ZARD',
-                        url: '/music/ZARD - サヨナラ言えなくて.flac',
-                        cover: '/music/ZARD - 遠い日のNostalgia.jpg',
+                        url: '/music/ZARD/ZARD - サヨナラ言えなくて.flac',
+                        cover: '/music/ZARD/ZARD - 遠い日のNostalgia.jpg',
+                        lrc: '/music/ZARD/ZARD - サヨナラ言えなくて.lrc',
+                    },
+                    {
+                        name: '運命のルーレット廻して',
+                        artist: 'ZARD',
+                        url: '/music/ZARD/01_ZARD - 運命のルーレット廻して.flac',
+                        cover: '/music/ZARD/01_ZARD - 運命のルーレット廻して.jpg',
+                        lrc: '/music/ZARD/01_ZARD - 運命のルーレット廻して.lrc',
+
+                    },
+                    {
+                        name: 'Dont you see!',
+                        artist: 'ZARD',
+                        url: '/music/ZARD/01_ZARD - Dont you see!.flac',
+                        cover: '/music/ZARD/01_ZARD - Dont you see!.jpg',
+                        lrc: '/music/ZARD/01_ZARD - Dont you see!.lrc',
+                    },
+                    {
+                        name: '遠い星を数えて',
+                        artist: 'ZARD',
+                        url: '/music/ZARD/ZARD - 遠い星を数えて (数着远方的星星).flac',
+                        cover: '/music/ZARD/ZARD - 遠い星を数えて (数着远方的星星).jpg',
+                        lrc: '/music/ZARD/ZARD - 遠い星を数えて (数着远方的星星).lrc',
+                    },
+                    {
+                        name: '少女の頃に戻ったみたいに',
+                        artist: 'ZARD',
+                        url: '/music/ZARD/ZARD - 少女の頃に戻ったみたいに (仿佛回到少女时代).flac',
+                        cover: '/music/ZARD/ZARD - 遠い星を数えて (数着远方的星星).jpg',
+                        lrc: '/music/ZARD/ZARD - 少女の頃に戻ったみたいに (仿佛回到少女时代).lrc',
+                    },
+                    {
+                        name: 'Good-bye My Loneliness',
+                        artist: 'ZARD',
+                        url: '/music/ZARD/ZARD - Good-bye My Loneliness.flac',
+                        cover: '/music/ZARD/ZARD - Good-bye My Loneliness.jpg',
+                        lrc: '/music/ZARD/ZARD - Good-bye My Loneliness.lrc',
+                    },
+                    {
+                        name: '永遠',
+                        artist: 'ZARD',
+                        url: '/music/ZARD/ZARD - 永遠.flac',
+                        cover: '/music/ZARD/ZARD - 遠い星を数えて (数着远方的星星).jpg',
+                        lrc: '/music/ZARD/ZARD - 永遠.lrc',
+                    },
+                    {
+                        name: '揺れる想い',
+                        artist: 'ZARD',
+                        url: '/music/ZARD/ZARD - 揺れる想い.flac',
+                        cover: '/music/ZARD/ZARD - 揺れる想い.jpg',
+                        lrc: '/music/ZARD/ZARD - 揺れる想い.lrc',
+                    },
+                    {
+                        name: '息もできない',
+                        artist: 'ZARD',
+                        url: '/music/ZARD/ZARD - 息もできない (无法呼吸).flac',
+                        cover: '/music/ZARD/ZARD - 息もできない (无法呼吸).jpg',
+                        lrc: '/music/ZARD/ZARD - 息もできない (无法呼吸).lrc',
                     },
                 ]       
         });

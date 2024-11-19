@@ -38,21 +38,6 @@ export const navBarConfig: NavBarConfig = {
     LinkPreset.Home,
     LinkPreset.Archive,
     LinkPreset.About,
-    {
-      name: '一言',
-      url: '/quotes/',     // Internal links should not include the base path, as it is automatically added
-      external: true,                               // Show an external link icon and will open in a new tab
-    },
-    {
-      name: '古诗',
-      url: '/shiju/',     // Internal links should not include the base path, as it is automatically added
-      external: true,                               // Show an external link icon and will open in a new tab
-    },
-    {
-      name: '说说',
-      url: 'https://broadcastchannel-e7f.pages.dev/',     // Internal links should not include the base path, as it is automatically added
-      external: true,                               // Show an external link icon and will open in a new tab
-    },
   ],
 }
 

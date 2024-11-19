@@ -1,0 +1,148 @@
+---
+// MusicPlayer.astro
+---
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPOP</title>
+    <link rel="icon" href="/favicon/icon.png" sizes="32x32" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@latest/dist/Meting.min.js" defer></script>
+    
+    <style>
+        .body {
+            font-family: 'Arial', sans-serif;
+            background-color: #EAEFF5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .container p {
+            font-size: 16px;
+            color: #666;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<div class="body">
+            
+<div class="container">
+    
+    <!-- APlayer container -->
+    <div id="aplayer"></div>
+
+    <!-- APlayer JavaScript -->
+    <script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            lrcType: 3,
+                audio: 
+                [
+                    {
+                        name: 'First Love',
+                        artist: '宇多田光',
+                        url: '/music/JPOP/宇多田光 - First Love.flac',
+                        cover: '/music/JPOP/宇多田光 - First Love.jpg',
+                        lrc: '/music/JPOP/宇多田光 - First Love.lrc',
+                    },
+                    {
+                        name: '美しきもの',
+                        artist: 'Sound Horizon',
+                        url: '/music/JPOP/美しきもの - Sound Horizon.flac',
+                        cover: '/music/JPOP/美しきもの - Sound Horizon.jpg',
+                        lrc: '/music/JPOP/美しきもの - Sound Horizon.lrc',
+                    },
+                    {
+                        name: '春泥棒',
+                        artist: 'ヨルシカ',
+                        url: '/music/JPOP/春泥棒 - ヨルシカ.flac',
+                        cover: '/music/JPOP/春泥棒 - ヨルシカ.jpg',
+                        lrc: '/music/JPOP/春泥棒 - ヨルシカ.lrc',
+                    },
+                    {
+                        name: 'また夏を追う',
+                        artist: 'あたらよ',
+                        url: '/music/JPOP/また夏を追う - あたらよ.flac',
+                        cover: '/music/JPOP/また夏を追う - あたらよ.jpg',
+                        lrc: '/music/JPOP/また夏を追う - あたらよ.lrc',
+                    },
+                    {
+                        name: 'せつない自由',
+                        artist: 'MANISH',
+                        url: '/music/JPOP/せつない自由 - MANISH.flac',
+                        cover: '/music/JPOP/せつない自由 - MANISH.png',
+                        lrc: '/music/JPOP/せつない自由 - MANISH.lrc',
+                    },
+                    {
+                        name: 'TOKYO',
+                        artist: 'YUI',
+                        url: '/music/JPOP/TOKYO - YUI.flac',
+                        cover: '/music/JPOP/TOKYO - YUI.jpg',
+                        lrc: '/music/JPOP/TOKYO - YUI.lrc',
+                    },
+                    {
+                        name: '銀色飛行船',
+                        artist: 'supercell',
+                        url: '/music/JPOP/supercell - 銀色飛行船 .flac',
+                        cover: '/music/JPOP/supercell - 銀色飛行船 .jpg',
+                        lrc: '/music/JPOP/supercell - 銀色飛行船 .lrc',
+                    },
+                    {
+                        name: 'Prover ',
+                        artist: 'milet',
+                        url: '/music/JPOP/Prover - milet.flac',
+                        cover: '/music/JPOP/Prover - milet.jpg',
+                        lrc: '/music/JPOP/Prover - milet.lrc',
+                    },
+                    {
+                        name: 'Letter Song',
+                        artist: 'ヲタみん',
+                        url: '/music/JPOP/Letter Song-ヲタみん.flac',
+                        cover: '/music/JPOP/Letter Song-ヲタみん.jpg',
+                        lrc: '/music/JPOP/Letter Song-ヲタみん.lrc',
+                    },
+                    {
+                        name: '一番の宝物',
+                        artist: 'karuta',
+                        url: '/music/JPOP/karuta - 一番の宝物 (最珍贵的宝物) (Original Version).flac',
+                        cover: '/music/JPOP/karuta - 一番の宝物 (最珍贵的宝物) (Original Version).jpg',
+                        lrc: '/music/JPOP/karuta - 一番の宝物 (最珍贵的宝物) (Original Version).lrc',
+                    },
+                ]       
+        });
+        });
+</script>
+</div>
+</body>
+</html>
