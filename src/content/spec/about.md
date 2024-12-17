@@ -3,17 +3,17 @@
 
 ::github{repo="yhoaua/yhoaua.github.io"}
 
+## 娱乐标记
 
+[动漫](https://bgm.tv/anime/list/yhoauann/collect)
 
+[游戏](https://bgm.tv/game/list/yhoauann/collect)
 
+[电影](https://movie.douban.com/people/yhoauann/collect?sort=time&amp;tags_sort=count&amp;filter=all&amp;start=0&amp;mode=grid&amp;type=movie)
 
-## 兴趣爱好
+[电视](https://movie.douban.com/people/yhoauann/collect?sort=time&amp;tags_sort=count&amp;filter=all&amp;start=0&amp;mode=grid&amp;type=tv)
 
-- 一个臭爱看动漫的，入坑作 [只有我不存在的城市](https://bgm.tv/subject/137722) ；最爱的动漫工作室是京阿尼，心目中的 [神作](https://bgm.tv/anime/list/yhoauann/collect?tag=%E7%A5%9E%E4%BD%9C) 。
-- 一个臭爱玩游戏的，喜欢的类型有ARPG，SLG；最爱的游戏公司是任天堂，心目中的 [神作](https://bgm.tv/game/list/yhoauann/collect?tag=%E7%A5%9E%E4%BD%9C) 。
-- 一个臭爱听歌的，[喜欢](/Music/)的风格有 [Rock](/rock/) ，[Pure](/pure/) ，[JPop](/jpop/) , [Pop](/pop/) ，最爱 [ZARD](/zard/) 。
-- 最致命的孤独，不是独自野外看星星，而是人群当中的寂寞。
-- 古今多少事，都付笑谈中。
+[书籍](https://book.douban.com/mine?status=collect)
 
 ## 联系方式
 
@@ -31,6 +31,6 @@
 
 [说说](https://broadcastchannel-e7f.pages.dev/)
 
+[音乐](https://yhmp.netlify.app/#/search/playlists?keyword=%E4%BC%8A%E9%9C%8D%E5%AE%89)
 
-
-> 最后 更新于 2024-10-23
+> 最后 更新于 2024-12-09
