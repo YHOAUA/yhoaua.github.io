@@ -32,5 +32,20 @@
 [说说](https://broadcastchannel-e7f.pages.dev/)
 
 [音乐](https://yhmp.netlify.app/#/search/playlists?keyword=%E4%BC%8A%E9%9C%8D%E5%AE%89)
+---
 
-> 最后 更新于 2024-12-09
+听会歌吧
+
+[喜欢](/Music/)
+
+[Rock](/rock/) 
+
+[Pure](/pure/) 
+
+[JPop](/jpop/)
+
+[Pop](/pop/)
+
+最爱 [ZARD](/zard/) 。
+
+> 最后 更新于 2024-12-17
