@@ -38,14 +38,4 @@
 
 [喜欢](/Music/)
 
-[Rock](/rock/) 
-
-[Pure](/pure/) 
-
-[JPop](/jpop/)
-
-[Pop](/pop/)
-
-最爱 [ZARD](/zard/) 。
-
 > 最后 更新于 2024-12-17
