@@ -1,6 +1,6 @@
 ---
 title: 为什么要探索宇宙—1970年NASA给赞比亚修女的回信
-published: 2025-11-23
+published: 2025-11-28
 tags: [宇宙]
 category: 转载
 ---
