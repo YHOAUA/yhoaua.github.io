@@ -16,8 +16,7 @@ export const siteConfig: SiteConfig = {
 	site_url: "https://yhoaua.github.io",
 
 	// 站点描述
-	description:
-		"博客",
+	description: "博客",
 
 	// 站点关键词
 	keywords: [
