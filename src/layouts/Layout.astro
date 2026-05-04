@@ -1154,7 +1154,6 @@ function disableAnimation() {
     setTimeout(scheduleContentOverflowEnhancements, 200);
   });
   let backToTopBtn = document.getElementById("back-to-top-btn");
-  let toc = document.getElementById("toc-wrapper");
   let navbar = document.getElementById("navbar-wrapper");
   const sidebarStickyState: Record<
     "left" | "right",
@@ -1173,6 +1172,7 @@ function disableAnimation() {
     const scrollTop = document.documentElement.scrollTop;
     const bannerHeight = window.innerHeight * (BANNER_HEIGHT / 100);
     const navbarElement = document.getElementById("navbar");
+    const toc = document.getElementById("toc-wrapper");
 
     // 根据滚动位置动态更新侧边栏 sticky 间距
     updateSidebarStickySpacing();

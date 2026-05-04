@@ -7,7 +7,7 @@
 
 [goodreads](https://www.goodreads.com/user/show/183395303)
 
-[bangumi](https://bgm.tv/user/yhoauann)/ [steam](https://steamcommunity.com/id/yhoauann/)
+[bangumi](https://bgm.tv/user/yhoauann) / [steam](https://steamcommunity.com/id/yhoauann/)
 
 
 

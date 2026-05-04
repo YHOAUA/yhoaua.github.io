@@ -42,7 +42,7 @@ export const siteConfig: SiteConfig = {
 	// 页面整体宽度（单位：rem）
 	// 数值越大可以让页面内容区域更宽
 	// 在使用单侧栏边栏时，建议调低一些宽度以获得更好的视觉效果。
-	pageWidth: 100,
+	pageWidth: 75,
 
 	// 网站Card样式配置
 	card: {
@@ -87,6 +87,11 @@ export const siteConfig: SiteConfig = {
 		followTheme: false,
 		// 导航栏是否固定在顶部并始终可见
 		stickyNavbar: true,
+	},
+
+	toc: {
+		enable: true,
+		depth: 2,
 	},
 
 	// 站点开始日期，用于统计运行天数

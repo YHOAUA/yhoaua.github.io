@@ -37,7 +37,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 		auth: "",
 		// 备用 API 配置（当主 API 失败时使用）
 		fallbackApis: [
-			"https://api.injahow.cn/meting/?server=:server&type=:type&id=:id",
+			"https://api.qijieya.cn/meting/?server=:server&type=:type&id=:id",
 			"https://api.moeyao.cn/meting/?server=:server&type=:type&id=:id",
 		],
 	},

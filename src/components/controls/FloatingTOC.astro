@@ -2,7 +2,7 @@
 import type { MarkdownHeading } from "astro";
 import { Icon } from "astro-icon/components";
 import FloatingButton from "@/components/common/FloatingButton.astro";
-import { sidebarLayoutConfig } from "@/config/sidebarConfig";
+import { siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import "@/styles/toc.css";
@@ -11,18 +11,16 @@ interface Props {
 	headings: MarkdownHeading[];
 }
 
-let { headings: _ = [] } = Astro.props;
-// ... (保留之前的逻辑)
-// 检查侧边栏目录组件是否启用
-const sidebarTocComponent = sidebarLayoutConfig.rightComponents?.find(
-	(c) => c.type === "sidebarToc",
-);
-const isSidebarTocEnabled = sidebarTocComponent?.enable ?? false;
-const sidebarPosition = sidebarLayoutConfig.position;
+let { headings = [] } = Astro.props;
 ---
 
 <!-- 悬浮TOC按钮 -->
-<div id="floating-toc-wrapper" class="floating-toc-wrapper" data-is-sidebar-toc-enabled={String(isSidebarTocEnabled)} data-sidebar-position={sidebarPosition} data-show-both-sidebars-on-post={String(sidebarLayoutConfig.showBothSidebarsOnPostPage ?? false)}>
+<div
+  id="floating-toc-wrapper"
+  class="floating-toc-wrapper"
+  data-has-headings={String(headings.length > 0)}
+  data-toc-depth={String(siteConfig.toc?.depth ?? 2)}
+>
   <FloatingButton
     id="floating-toc-btn"
     icon="material-symbols:format-list-bulleted"
@@ -138,9 +136,20 @@ const sidebarPosition = sidebarLayoutConfig.position;
 <script>
   import { TOCManager, isPostPage } from "@/utils/toc-utils";
 
-  // 从 data 属性读取配置
-  const wrapper = document.querySelector('.floating-toc-wrapper');
-  const isSidebarTocEnabled = wrapper?.getAttribute('data-is-sidebar-toc-enabled') === 'true';
+  function getFloatingTOCWrapper() {
+    return document.querySelector('.floating-toc-wrapper');
+  }
+
+  function getHasHeadings() {
+    return getFloatingTOCWrapper()?.getAttribute('data-has-headings') === 'true';
+  }
+
+  function getTOCDepth() {
+    return Number.parseInt(
+      getFloatingTOCWrapper()?.getAttribute('data-toc-depth') || '2',
+      10,
+    );
+  }
 
   if (typeof window.FloatingTOC === "undefined") {
     window.FloatingTOC = {
@@ -232,24 +241,17 @@ const sidebarPosition = sidebarLayoutConfig.position;
 
   // 检查是否应该显示悬浮目录
   function shouldShowFloatingTOC() {
-    // 检查是否为文章页面
     if (!window.FloatingTOC.isPostPage()) {
       return false;
     }
 
-    const wrapper = document.querySelector('.floating-toc-wrapper');
-    const sidebarPosition = wrapper?.getAttribute('data-sidebar-position') || 'left';
-    const showBothSidebarsOnPost = wrapper?.getAttribute('data-show-both-sidebars-on-post') === 'true';
-
-    // 双侧边栏模式（含文章页临时双侧栏）：小屏幕或侧边栏目录未启用时显示悬浮目录
-    const effectiveIsBothSidebars = sidebarPosition === 'both' || showBothSidebarsOnPost;
-    if (effectiveIsBothSidebars) {
-      const isSmallScreen = window.innerWidth < 1280;
-      return isSmallScreen || !isSidebarTocEnabled;
+    if (!getHasHeadings()) {
+      return false;
     }
 
-    // 单侧边栏模式（left或right），对侧没有侧边栏目录，始终显示悬浮目录
-    return true;
+    const desktopTocWrapper = document.getElementById("toc-wrapper");
+    const hasDesktopToc = !!desktopTocWrapper && window.innerWidth >= 1536;
+    return !hasDesktopToc;
   }
 
   // 更新悬浮目录的显示状态
@@ -288,7 +290,7 @@ const sidebarPosition = sidebarLayoutConfig.position;
       window.FloatingTOC.manager = new TOCManager({
         contentId: "floating-toc-content",
         indicatorId: "floating-active-indicator",
-        maxLevel: 3,
+        maxLevel: getTOCDepth(),
         scrollOffset: 80,
       });
 
@@ -306,9 +308,6 @@ const sidebarPosition = sidebarLayoutConfig.position;
           }
         }, { capture: true });
       }
-
-      // 设置自动关闭
-      setupAutoClose();
     } catch (error) {
       console.error("Failed to load TOCManager:", error);
     }
@@ -320,6 +319,7 @@ const sidebarPosition = sidebarLayoutConfig.position;
   // 监听页面切换事件
   if (typeof window !== "undefined" && !window.floatingTOCListenersInitialized) {
     window.floatingTOCListenersInitialized = true;
+    setupAutoClose();
 
     // Swup 路由切换
     document.addEventListener("swup:contentReplaced", () => {

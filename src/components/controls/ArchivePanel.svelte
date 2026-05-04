@@ -154,11 +154,6 @@ onMount(async () => {
 						<span class="ml-2 text-50">· {formatFilterSummary(secondaryFilters)}</span>
 					{/if}
 				</div>
-				<div class="shrink-0 text-xs text-50">
-					{filteredPostCount} {i18n(filteredPostCount === 1 ? I18nKey.postCount : I18nKey.postsCount)}
-					<span class="mx-1.5 text-30">·</span>
-					{groups.length} {i18n(I18nKey.year)}
-				</div>
 			</div>
 		</div>
 	{/if}

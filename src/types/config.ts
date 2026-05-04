@@ -74,6 +74,11 @@ export type SiteConfig = {
 		stickyNavbar?: boolean; // 导航栏是否固定在顶部始终可见
 	};
 
+	toc?: {
+		enable: boolean; // 是否启用文章目录
+		depth: 1 | 2 | 3; // 目录最大层级
+	};
+
 	showLastModified: boolean; // 控制"上次编辑"卡片显示的开关
 	outdatedThreshold?: number; // 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片
 	sharePoster?: boolean; // 是否显示分享海报按钮
@@ -402,9 +407,7 @@ export type WidgetComponentType =
 	| "announcement"
 	| "categories"
 	| "tags"
-	| "sidebarToc"
 	| "advertisement"
-	| "stats"
 	| "music";
 
 export type WidgetComponentConfig = {
