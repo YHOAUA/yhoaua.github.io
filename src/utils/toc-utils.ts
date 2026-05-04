@@ -1,10 +1,7 @@
 /**
  * TOC (Table of Contents) 工具类
- * 用于 SidebarTOC 和 FloatingTOC 的共享逻辑
+ * 用于已渲染目录的高亮、滚动和点击跳转逻辑
  */
-
-import I18nKey from "@/i18n/i18nKey";
-import { i18n } from "@/i18n/translation";
 
 export interface TOCConfig {
 	contentId: string;
@@ -16,8 +13,6 @@ export interface TOCConfig {
 export class TOCManager {
 	private tocItems: HTMLElement[] = [];
 	private observer: IntersectionObserver | null = null;
-	private minDepth = 10;
-	private maxLevel: number;
 	private scrollTimeout: number | null = null;
 	private contentId: string;
 	private indicatorId: string;
@@ -26,7 +21,6 @@ export class TOCManager {
 	constructor(config: TOCConfig) {
 		this.contentId = config.contentId;
 		this.indicatorId = config.indicatorId;
-		this.maxLevel = config.maxLevel || 3;
 		this.scrollOffset = config.scrollOffset || 80;
 	}
 
@@ -51,165 +45,6 @@ export class TOCManager {
 		}
 		return Array.from(
 			contentContainer.querySelectorAll("h1, h2, h3, h4, h5, h6"),
-		);
-	}
-
-	/**
-	 * 计算最小深度
-	 */
-	private calculateMinDepth(headings: HTMLElement[]): number {
-		let minDepth = 10;
-		headings.forEach((heading) => {
-			const depth = Number.parseInt(heading.tagName.charAt(1), 10);
-			minDepth = Math.min(minDepth, depth);
-		});
-		return minDepth;
-	}
-
-	/**
-	 * 过滤标题
-	 */
-	private filterHeadings(headings: HTMLElement[]): HTMLElement[] {
-		return Array.from(headings).filter((heading) => {
-			const depth = Number.parseInt(heading.tagName.charAt(1), 10);
-			return depth < this.minDepth + this.maxLevel;
-		});
-	}
-
-	/**
-	 * 获取标题的纯文本内容（排除 script/style 标签的文本）
-	 */
-	private getCleanTextContent(element: HTMLElement): string {
-		const clone = element.cloneNode(true) as HTMLElement;
-		for (const el of clone.querySelectorAll("script, style")) {
-			el.remove();
-		}
-		return clone.textContent || "";
-	}
-
-	/**
-	 * 转义 HTML 属性值，避免标题中的引号破坏属性
-	 */
-	private escapeHtmlAttr(value: string): string {
-		return value
-			.replace(/&/g, "&amp;")
-			.replace(/"/g, "&quot;")
-			.replace(/'/g, "&#39;")
-			.replace(/</g, "&lt;")
-			.replace(/>/g, "&gt;");
-	}
-
-	/**
-	 * 生成徽章内容
-	 */
-	private generateBadgeContent(depth: number, heading1Count: number): string {
-		if (depth === this.minDepth) {
-			return heading1Count.toString();
-		}
-		if (depth === this.minDepth + 1) {
-			return '<span class="toc-badge-dot"></span>';
-		}
-		return '<span class="toc-badge-dot toc-badge-dot-sm"></span>';
-	}
-
-	/**
-	 * 空状态文案
-	 */
-	private getEmptyStateHTML(): string {
-		return `<div class="text-center py-8 text-gray-500 dark:text-gray-400"><p>${i18n(I18nKey.tocEmpty)}</p></div>`;
-	}
-
-	/**
-	 * 生成TOC HTML
-	 */
-	public generateTOCHTML(): string {
-		const headings = this.getAllHeadings();
-
-		if (headings.length === 0) {
-			return this.getEmptyStateHTML();
-		}
-
-		this.minDepth = this.calculateMinDepth(headings);
-		const filteredHeadings = this.filterHeadings(headings);
-
-		if (filteredHeadings.length === 0) {
-			return this.getEmptyStateHTML();
-		}
-
-		let tocHTML = "";
-		let heading1Count = 1;
-
-		filteredHeadings.forEach((heading) => {
-			const depth = Number.parseInt(heading.tagName.charAt(1), 10);
-			const depthLevel =
-				depth === this.minDepth ? 0 : depth === this.minDepth + 1 ? 1 : 2;
-
-			if (!heading.id) {
-				return;
-			}
-
-			const badgeContent = this.generateBadgeContent(depth, heading1Count);
-			if (depth === this.minDepth) {
-				heading1Count++;
-			}
-
-			let headingText = this.getCleanTextContent(heading)
-				.replace(/#+\s*$/, "")
-				.trim();
-
-			// Fallback for empty text (e.g. dynamic subtitle)
-			if (!headingText) {
-				const dataSubtitles = heading.getAttribute("data-subtitles");
-				if (dataSubtitles) {
-					try {
-						const subtitles = JSON.parse(dataSubtitles);
-						headingText = Array.isArray(subtitles) ? subtitles[0] : subtitles;
-					} catch {
-						// ignore
-					}
-				}
-			}
-
-			if (!headingText) {
-				headingText =
-					heading.id === "banner-subtitle"
-						? "Banner Subtitle"
-						: heading.id || "Heading";
-			}
-
-			const escapedHeadingText = this.escapeHtmlAttr(headingText);
-
-			tocHTML += `
-        <a 
-          href="#${heading.id}" 
-			  class="toc-item toc-level-${depthLevel}"
-          data-heading-id="${heading.id}"
-		  aria-label="${escapedHeadingText}"
-		  title="${escapedHeadingText}"
-        >
-			  <div class="toc-badge ${depth === this.minDepth ? "toc-badge-index" : ""}">
-            ${badgeContent}
-          </div>
-			  <div class="toc-label ${depth <= this.minDepth + 1 ? "toc-label-primary" : "toc-label-secondary"}">${headingText}</div>
-        </a>
-      `;
-		});
-
-		tocHTML += `<div id="${this.indicatorId}" style="opacity: 0;" class="toc-active-indicator"></div>`;
-
-		return tocHTML;
-	}
-
-	/**
-	 * 更新TOC内容
-	 */
-	public updateTOCContent(): void {
-		const tocContent = document.getElementById(this.contentId);
-		if (!tocContent) return;
-
-		tocContent.innerHTML = this.generateTOCHTML();
-		this.tocItems = Array.from(
-			document.querySelectorAll(`#${this.contentId} a`),
 		);
 	}
 
@@ -440,7 +275,9 @@ export class TOCManager {
 	 * 初始化
 	 */
 	public init(): void {
-		this.updateTOCContent();
+		this.tocItems = Array.from(
+			document.querySelectorAll(`#${this.contentId} a[data-heading-id]`),
+		);
 		this.bindClickEvents();
 		this.setupObserver();
 		this.updateActiveState();

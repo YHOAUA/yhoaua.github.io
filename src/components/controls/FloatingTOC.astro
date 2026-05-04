@@ -2,6 +2,7 @@
 import type { MarkdownHeading } from "astro";
 import { Icon } from "astro-icon/components";
 import FloatingButton from "@/components/common/FloatingButton.astro";
+import TOCEntries from "@/components/common/TOCEntries.astro";
 import { siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
@@ -57,11 +58,11 @@ let { headings = [] } = Astro.props;
 
     <div class="toc-scroll-container p-4">
         <div
-        class="toc-content"
+        class="toc-content group"
         id="floating-toc-content"
         style="width: 100%; max-width: 100%;"
         >
-        <!-- TOC内容将由JavaScript动态生成 -->
+        <TOCEntries headings={headings} indicatorId="floating-active-indicator" />
         </div>
     </div>
   </div>
@@ -286,7 +287,6 @@ let { headings = [] } = Astro.props;
         window.FloatingTOC.manager.cleanup();
       }
 
-      // 创建新实例
       window.FloatingTOC.manager = new TOCManager({
         contentId: "floating-toc-content",
         indicatorId: "floating-active-indicator",
@@ -294,7 +294,6 @@ let { headings = [] } = Astro.props;
         scrollOffset: 80,
       });
 
-      // 初始化
       window.FloatingTOC.manager.init();
 
       // 设置点击事件 - 标记为 TOC 内部导航
