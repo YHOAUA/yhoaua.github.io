@@ -50,7 +50,7 @@ export type SiteConfig = {
 	// bangumi配置
 	bangumi?: {
 		userId?: string; // Bangumi用户ID
-		categoryOrder?: ("anime" | "game" | "book" | "music" | "real")[]; // 条目类型排序顺序
+		categoryOrder?: ("anime" | "game" | "real")[]; // 条目类型排序顺序
 	};
 
 	generateOgImages: boolean;

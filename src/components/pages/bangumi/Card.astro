@@ -1,16 +1,16 @@
 ---
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
-import type { UserSubjectCollection } from "@/types/bangumi";
+import type { MediaCollectionItem } from "@/types/bangumi";
 
 interface Props {
-	item: UserSubjectCollection;
+	item: MediaCollectionItem;
 	loadImage?: boolean;
 }
 
 const { item, loadImage = false } = Astro.props;
 
-const subject_base_url = "https://bgm.tv/subject/";
+const subjectUrl = item.subject.url;
 
 const getStatusColor = (type: number) => {
 	switch (type) {
@@ -72,7 +72,7 @@ const hiddenCoverTagCount = Math.max(
 ---
 
 <a
-  href={`${subject_base_url}${item.subject.id}`}
+  href={subjectUrl}
   target="_blank"
   rel="noopener noreferrer nofollow"
   class="group relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-[1.02] block"
@@ -86,6 +86,7 @@ const hiddenCoverTagCount = Math.max(
         class="w-full h-full object-cover pointer-events-none transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
         decoding="async"
+        referrerpolicy="no-referrer"
       />
     ) : (
       <div class="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
@@ -112,6 +113,12 @@ const hiddenCoverTagCount = Math.max(
       <h3 class="font-bold text-sm text-white line-clamp-2 drop-shadow-lg">
         {item.subject.name_cn || item.subject.name}
       </h3>
+
+      {item.subject.creator && (
+        <p class="text-xs text-white/80 mt-1 line-clamp-1" title={item.subject.creator}>
+          {item.subject.creator}
+        </p>
+      )}
 
       {item.subject.date && (
         <p class="text-xs text-white/60 mt-1">

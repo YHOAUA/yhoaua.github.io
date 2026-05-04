@@ -19,10 +19,33 @@ export type UserSubjectCollection = {
 	subject: SlimSubject; // 条目信息
 };
 
+export type MediaCollectionSource = "bangumi" | "goodreads";
+
+export type MediaCollectionItem = {
+	id: string;
+	source: MediaCollectionSource;
+	subject_id: number;
+	subject_type: SubjectType;
+	rate: number;
+	type: CollectionType;
+	comment?: string | null;
+	tags: string[];
+	ep_status: number;
+	vol_status: number;
+	updated_at: string;
+	private: boolean;
+	subject: MediaSubject;
+	meta?: {
+		dateAdded?: string;
+		dateCreated?: string;
+		readAt?: string;
+	};
+};
+
 // 1: 想看，2: 看过，3: 在看，4: 搁置，5: 抛弃
 export type CollectionType = 1 | 2 | 3 | 4 | 5;
 
-export type SlimSubject = {
+export type MediaSubject = {
 	id: number; // ID
 	type: SubjectType; // 类型
 	name: string; // 名称
@@ -36,7 +59,13 @@ export type SlimSubject = {
 	score: number; // 评分
 	rank: number; // 排名
 	tags: SubjectTag[]; // 标签
+	url: string; // 条目详情页
+	creator?: string; // 作者/创作者
+	pageCount?: number; // 页数
+	isbn?: string; // ISBN
 };
+
+export type SlimSubject = MediaSubject;
 
 // 1: 书籍，2: 动画，3: 音乐，4: 游戏，6: 三次元
 export type SubjectType = 1 | 2 | 3 | 4 | 6;
