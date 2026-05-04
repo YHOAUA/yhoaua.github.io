@@ -1,0 +1,174 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import ProjectCard from "@/components/pages/projects/ProjectCard.astro";
+import { siteConfig } from "@/config";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { resolveProjectEntries } from "@/utils/projects-utils";
+
+if (!siteConfig.pages.projects) {
+	return Astro.redirect("/404/");
+}
+
+const projectEntries = await getCollection(
+	"projects",
+	({ data }) => !data.draft,
+);
+const projects = (await resolveProjectEntries(projectEntries)).sort(
+	(a, b) => (b.date?.getTime() || 0) - (a.date?.getTime() || 0),
+);
+
+const categoryMeta = [
+	{ key: "作品", label: i18n(I18nKey.projectsCategoryWorks) },
+	{ key: "开源", label: i18n(I18nKey.projectsCategoryOpenSource) },
+	{ key: "练习", label: i18n(I18nKey.projectsCategoryPractice) },
+] as const;
+
+const activeCategories = new Set(projects.map((project) => project.category));
+const visibleCategories = categoryMeta.filter((category) =>
+	activeCategories.has(category.key),
+);
+
+const categoryLabels = new Map(
+	categoryMeta.map((item) => [item.key, item.label]),
+);
+
+const statusLabels = {
+	active: i18n(I18nKey.projectsStatusActive),
+	maintained: i18n(I18nKey.projectsStatusMaintained),
+	archived: i18n(I18nKey.projectsStatusArchived),
+} as const;
+
+const title = i18n(I18nKey.projects);
+const description = i18n(I18nKey.projectsDescription);
+---
+
+<MainGridLayout title={title} description={description}>
+	<div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+		<div class="card-base z-10 px-9 py-6 relative w-full">
+			<div class="mb-4">
+				<div class="flex items-center gap-3 mb-3">
+					<div class="h-8 w-8 rounded-lg bg-(--primary) flex items-center justify-center text-white dark:text-black/70">
+						<Icon name="material-symbols:deployed-code" class="text-[1.5rem]" />
+					</div>
+					<div class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+						{title}
+					</div>
+				</div>
+				{description && (
+					<p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+						{description}
+					</p>
+				)}
+			</div>
+
+				{projects.length > 0 && visibleCategories.length > 0 && (
+					<project-filter class="flex flex-wrap gap-2 mb-6">
+					<button
+						data-tag="all"
+						class="btn-regular px-3 py-1.5 rounded-lg bg-(--primary) text-white hover:bg-(--primary) transition-colors duration-200 text-sm font-medium"
+					>
+						{i18n(I18nKey.all)}
+					</button>
+						{visibleCategories.map((category) => (
+							<button
+								data-tag={category.key}
+							class="btn-regular px-3 py-1.5 rounded-lg bg-(--btn-regular-bg) text-(--btn-content) hover:bg-(--btn-regular-bg-hover) transition-colors duration-200 text-sm font-medium"
+						>
+							{category.label}
+						</button>
+					))}
+				</project-filter>
+			)}
+
+			{projects.length > 0 ? (
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
+					{projects.map((project) => (
+						<ProjectCard
+							title={project.title}
+							description={project.description}
+							category={project.category}
+							categoryLabel={categoryLabels.get(project.category) || project.category}
+							tags={project.tags}
+							status={project.status}
+							statusLabel={statusLabels[project.status]}
+							date={project.date}
+							repoUrl={project.repoUrl}
+						/>
+					))}
+				</div>
+			) : (
+				<div class="flex flex-col items-center justify-center py-16 text-neutral-400 dark:text-neutral-500">
+					<Icon name="material-symbols:deployed-code" class="text-6xl mb-4 opacity-50" />
+					<p class="text-lg">{i18n(I18nKey.projectsEmpty)}</p>
+					<p class="text-sm mt-2">{i18n(I18nKey.projectsEmptyDescription)}</p>
+				</div>
+			)}
+		</div>
+	</div>
+
+	<script slot="head" is:inline>
+		if (!customElements.get("project-filter")) {
+			class ProjectFilter extends HTMLElement {
+				connectedCallback() {
+					this.addEventListener("click", this.handleClick);
+				}
+
+				disconnectedCallback() {
+					this.removeEventListener("click", this.handleClick);
+				}
+
+				handleClick(e) {
+					const target = e.target;
+					const button = target.closest("button");
+					if (!button) return;
+
+					const selectedTag = button.dataset.tag;
+					const filters = this.querySelectorAll("button");
+					const container = this.closest(".card-base");
+					if (!container) return;
+
+					const cards = container.querySelectorAll(".project-card");
+
+					filters.forEach((f) => {
+						f.classList.remove("bg-(--primary)", "text-white");
+						f.classList.remove("hover:bg-(--primary)");
+						f.classList.add(
+							"bg-(--btn-regular-bg)",
+							"text-(--btn-content)"
+						);
+						f.classList.add("hover:bg-(--btn-regular-bg-hover)");
+
+						if (f === button) {
+							f.classList.remove(
+								"bg-(--btn-regular-bg)",
+								"text-(--btn-content)"
+							);
+							f.classList.remove("hover:bg-(--btn-regular-bg-hover)");
+							f.classList.add("bg-(--primary)", "text-white");
+							f.classList.add("hover:bg-(--primary)");
+						}
+					});
+
+						cards.forEach((card) => {
+							const cardEl = card;
+							const category = cardEl.dataset.category;
+							if (
+								selectedTag === "all" ||
+								(selectedTag && category === selectedTag)
+							) {
+								cardEl.style.display = "";
+								cardEl.classList.add("animate-fade-in-up");
+						} else {
+							cardEl.style.display = "none";
+							cardEl.classList.remove("animate-fade-in-up");
+						}
+					});
+				}
+			}
+			customElements.define("project-filter", ProjectFilter);
+		}
+	</script>
+</MainGridLayout>

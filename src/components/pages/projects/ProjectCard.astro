@@ -1,0 +1,88 @@
+---
+import { formatDateToYYYYMMDD } from "@/utils/date-utils";
+
+interface Props {
+	title: string;
+	description: string;
+	category: string;
+	categoryLabel: string;
+	tags: string[];
+	status: "active" | "maintained" | "archived";
+	statusLabel: string;
+	date?: Date;
+	repoUrl?: string;
+	featured?: boolean;
+}
+
+const {
+	title,
+	description,
+	category,
+	categoryLabel,
+	tags,
+	status,
+	statusLabel,
+	date,
+	repoUrl,
+} = Astro.props;
+---
+
+<article
+	data-category={category}
+	data-tags={[category, ...tags].join(",")}
+	data-status={status}
+	class="project-card group overflow-hidden rounded-xl border border-black/5 bg-white/80 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg dark:border-white/10 dark:bg-white/5"
+>
+	<div class="space-y-3 p-4">
+		<div class="flex flex-wrap items-center gap-2 text-[0.7rem] text-neutral-500 dark:text-neutral-400">
+			<span class="rounded-full bg-(--btn-regular-bg) px-2 py-1 text-(--btn-content)">
+				{categoryLabel}
+			</span>
+			<span class="rounded-full bg-black/6 px-2 py-1 text-neutral-600 dark:bg-white/10 dark:text-neutral-300">
+				{statusLabel}
+			</span>
+			{date && <span>{formatDateToYYYYMMDD(date)}</span>}
+		</div>
+
+		<div class="space-y-1.5">
+			<h3 class="line-clamp-1 text-base font-bold text-neutral-900 dark:text-neutral-100">
+				{
+					repoUrl ? (
+						<a
+							href={repoUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="transition-opacity hover:opacity-80"
+						>
+							{title}
+						</a>
+					) : (
+						title
+					)
+				}
+			</h3>
+			{
+				description && (
+					<p
+						class="line-clamp-2 min-h-[2.75rem] text-sm leading-relaxed text-neutral-600 dark:text-neutral-400"
+						title={description}
+					>
+						{description}
+					</p>
+				)
+			}
+		</div>
+
+		{
+			tags.length > 0 && (
+				<div class="flex flex-wrap gap-1.5">
+					{tags.slice(0, 4).map((tag) => (
+						<span class="rounded-full bg-(--btn-regular-bg) px-2 py-1 text-[0.68rem] text-(--btn-content)">
+							#{tag}
+						</span>
+					))}
+				</div>
+			)
+		}
+	</div>
+</article>
