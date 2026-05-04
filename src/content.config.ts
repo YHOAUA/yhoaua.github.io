@@ -36,7 +36,25 @@ const specCollection = defineCollection({
 	schema: z.object({}),
 });
 
+const projectsCollection = defineCollection({
+	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
+	schema: z.object({
+		title: z.string().optional(),
+		description: z.string().optional(),
+		category: z.enum(["作品", "开源", "练习"]),
+		tags: z.array(z.string()).optional().default([]),
+		date: z.date().optional(),
+		featured: z.boolean().optional().default(false),
+		status: z.enum(["active", "maintained", "archived"]).optional(),
+		techStack: z.array(z.string()).optional().default([]),
+		demoUrl: z.url().optional(),
+		repoUrl: z.url().optional(),
+		draft: z.boolean().optional().default(false),
+	}),
+});
+
 export const collections = {
 	posts: postsCollection,
 	spec: specCollection,
+	projects: projectsCollection,
 };
