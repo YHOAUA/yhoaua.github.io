@@ -8,7 +8,6 @@ Firefly 项目中所有可复用组件的集中管理。组件按照功能和职
 
 负责整体页面框架和布局结构的组件。
 
-- `CategoryBar.astro` - 分类栏组件
 - `ConfigCarrier.astro` - 配置载体组件
 - `DropdownMenu.astro` - 下拉菜单组件
 - `Footer.astro` - 页脚组件
@@ -67,7 +66,6 @@ Firefly 项目中所有可复用组件的集中管理。组件按照功能和职
 
 - `Advertisement.astro` - 广告组件
 - `Announcement.astro` - 公告组件
-- `Calendar.astro` - 日历组件
 - `Categories.astro` - 分类组件
 - `Live2DWidget.astro` - Live2D 看板娘组件
 - `Music.astro` - 音乐播放器小部件

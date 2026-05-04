@@ -78,7 +78,7 @@ export const siteConfig: SiteConfig = {
 			alt: "🍀",
 		},
 		// 导航栏标题
-		title: "Firefly",
+		title: "伊霍安的 BLOG",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中
@@ -138,9 +138,6 @@ export const siteConfig: SiteConfig = {
 		// 相册页面开关
 		gallery: true,
 	},
-
-	// 分类导航栏开关，在首页和归档页顶部显示分类快捷导航
-	categoryBar: true,
 
 	// 文章列表布局配置
 	postListLayout: {
