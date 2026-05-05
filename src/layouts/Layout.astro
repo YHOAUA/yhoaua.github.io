@@ -1269,6 +1269,26 @@ function disableAnimation() {
   const isCurrentPagePost = () =>
     window.location.pathname.includes("/posts/") || window.location.pathname.includes("/post/");
 
+  function updateDesktopTOCVisibility() {
+    const tocWrapper = document.getElementById("toc-wrapper");
+    const tocContent = document.getElementById("toc");
+    if (!tocWrapper || !tocContent) return;
+
+    const isPostPage = isCurrentPagePost();
+    const hasDesktopTOC = tocContent.querySelector("table-of-contents");
+
+    if (isPostPage && hasDesktopTOC) {
+      tocWrapper.classList.remove("hidden");
+      tocWrapper.classList.add("lg:block");
+      tocWrapper.setAttribute("aria-hidden", "false");
+    } else {
+      tocWrapper.classList.add("hidden");
+      tocWrapper.classList.remove("lg:block");
+      tocWrapper.setAttribute("aria-hidden", "true");
+      tocWrapper.classList.remove("toc-not-ready");
+    }
+  }
+
   // 更新主网格的网格列数
   function updateMainGridCols() {
     const mainGrid = document.getElementById("main-grid");
@@ -1349,6 +1369,7 @@ function disableAnimation() {
     });
 
     // 组件可见性变化后，立即重算 sticky 间距，避免 swup 切页后残留旧间距
+    updateDesktopTOCVisibility();
     updateSidebarStickySpacing();
   }
 
