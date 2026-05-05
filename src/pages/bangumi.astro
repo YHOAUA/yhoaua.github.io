@@ -6,7 +6,7 @@ import { siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
-import type { MediaCollectionItem } from "@/types/bangumi";
+import type { MediaCollectionItem, SubjectType } from "@/types/bangumi";
 import { fetchBangumiCollections } from "@/utils/bangumi-utils";
 import { formatDateI18nWithTime } from "@/utils/date-utils";
 
@@ -50,7 +50,10 @@ const categoryMap = {
 	},
 	game: { id: "game", name: i18n(I18nKey.bangumiCategoryGame), subjectType: 4 },
 	real: { id: "real", name: i18n(I18nKey.bangumiCategoryReal), subjectType: 6 },
-};
+} satisfies Record<
+	string,
+	{ id: string; name: string; subjectType: SubjectType }
+>;
 
 // 获取所有启用分类的数据
 const bangumiData: Record<string, MediaCollectionItem[]> = {};
