@@ -69,7 +69,9 @@ if (!isBangumiUserConfigured) {
 
 const isDev = import.meta.env.DEV;
 
-for (const [categoryKey, enabled] of Object.entries(collectionConfig.categories)) {
+for (const [categoryKey, enabled] of Object.entries(
+	collectionConfig.categories,
+)) {
 	if (enabled && categoryMap[categoryKey as keyof typeof categoryMap]) {
 		const categoryInfo = categoryMap[categoryKey as keyof typeof categoryMap];
 		const fetcher = isBangumiUserConfigured

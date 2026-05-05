@@ -92,7 +92,9 @@ export async function fetchBangumiCollections({
 	}
 }
 
-function normalizeBangumiCollection(item: UserSubjectCollection): MediaCollectionItem {
+function normalizeBangumiCollection(
+	item: UserSubjectCollection,
+): MediaCollectionItem {
 	return {
 		id: `bangumi-${item.subject_id}`,
 		source: "bangumi",
