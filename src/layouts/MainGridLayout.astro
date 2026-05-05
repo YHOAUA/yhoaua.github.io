@@ -936,29 +936,37 @@ const bannerCarouselInterval = Math.max(
 
 <div class="absolute w-full z-0 hidden 2xl:block">
     <div class="relative max-w-(--page-width) mx-auto">
-        {siteConfig.toc?.enable && isPostPage ? (
+        <div
+            id="toc-wrapper"
+            class:list={[
+                "transition absolute top-0 w-[var(--toc-width)] items-center",
+                siteConfig.toc?.enable && isPostPage ? "hidden lg:block" : "hidden",
+                { "toc-hide": siteConfig.toc?.enable && isPostPage && isBannerMode && isBackgroundEnabled },
+            ]}
+            style="right: calc(var(--toc-width) * -1);"
+            aria-hidden={siteConfig.toc?.enable && isPostPage ? "false" : "true"}
+        >
             <div
-                id="toc-wrapper"
-                class:list={[
-                    "hidden lg:block transition absolute top-0 w-[var(--toc-width)] items-center",
-                    { "toc-hide": isBannerMode && isBackgroundEnabled },
-                ]}
-                style="right: calc(var(--toc-width) * -1);"
+                id="toc-inner-wrapper"
+                class="fixed top-14 w-[var(--toc-width)] h-[calc(100vh_-_20rem)] overflow-y-scroll overflow-x-hidden hide-scrollbar"
             >
                 <div
-                    id="toc-inner-wrapper"
-                    class="fixed top-14 w-[var(--toc-width)] h-[calc(100vh_-_20rem)] overflow-y-scroll overflow-x-hidden hide-scrollbar"
+                    id="toc"
+                    class:list={[
+                        "w-full h-full transition-swup-fade",
+                        { hidden: !(siteConfig.toc?.enable && isPostPage) },
+                    ]}
                 >
-                    <div id="toc" class="w-full h-full transition-swup-fade">
-                        <div class="h-8 w-full"></div>
-                        <DesktopTOC headings={headings} />
-                        <div class="h-8 w-full"></div>
-                    </div>
+                    {siteConfig.toc?.enable && isPostPage ? (
+                        <>
+                            <div class="h-8 w-full"></div>
+                            <DesktopTOC headings={headings} />
+                            <div class="h-8 w-full"></div>
+                        </>
+                    ) : null}
                 </div>
             </div>
-        ) : (
-            <div id="toc" class="hidden"></div>
-        )}
+        </div>
     </div>
 </div>
 

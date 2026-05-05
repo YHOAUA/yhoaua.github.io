@@ -36,16 +36,14 @@ const { headings = [] } = Astro.props;
 
 		markVisibleSection = (entries: IntersectionObserverEntry[]) => {
 			entries.forEach((entry) => {
-				const id = entry.target.children[0]?.getAttribute("id");
+				const heading = entry.target.firstElementChild;
+				const id = heading?.getAttribute("id");
 				const idx = id ? this.headingIdxMap.get(id) : undefined;
 				if (idx !== undefined) {
 					this.active[idx] = entry.isIntersecting;
 				}
 
-				if (
-					entry.isIntersecting &&
-					this.anchorNavTarget === entry.target.firstChild
-				) {
+				if (entry.isIntersecting && heading === this.anchorNavTarget) {
 					this.anchorNavTarget = null;
 				}
 			});
@@ -101,8 +99,8 @@ const { headings = [] } = Astro.props;
 		scrollToActiveHeading = () => {
 			if (this.anchorNavTarget || !this.tocEl) return;
 
-			const activeHeading = document.querySelectorAll<HTMLAnchorElement>(
-				`#toc .${this.visibleClass}`,
+			const activeHeading = this.querySelectorAll<HTMLAnchorElement>(
+				`a.${this.visibleClass}`,
 			);
 			if (!activeHeading.length) return;
 
@@ -194,6 +192,9 @@ const { headings = [] } = Astro.props;
 				capture: true,
 			});
 			this.headingIdxMap.clear();
+			this.anchorNavTarget = null;
+			this.tocEl = null;
+			this.activeIndicator = null;
 			this.headings = [];
 			this.sections = [];
 			this.tocEntries = [];
@@ -206,11 +207,9 @@ const { headings = [] } = Astro.props;
 				this.cleanup();
 			}
 
-			this.tocEl = document.getElementById("toc-inner-wrapper");
-			this.activeIndicator = document.getElementById("active-indicator");
-			this.tocEntries = Array.from(
-				document.querySelectorAll<HTMLAnchorElement>("#toc a[href^='#']"),
-			);
+			this.tocEl = this.closest("#toc-inner-wrapper");
+			this.activeIndicator = this.querySelector("#active-indicator");
+			this.tocEntries = Array.from(this.querySelectorAll<HTMLAnchorElement>("a[href^='#']"));
 
 			if (!this.tocEl || this.tocEntries.length === 0) {
 				return;
