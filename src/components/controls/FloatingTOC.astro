@@ -138,7 +138,12 @@ let { headings = [] } = Astro.props;
   import { TOCManager, isPostPage } from "@/utils/toc-utils";
 
   function getFloatingTOCWrapper() {
-    return document.querySelector('.floating-toc-wrapper');
+    const wrappers = document.querySelectorAll<HTMLElement>('.floating-toc-wrapper');
+    return wrappers[wrappers.length - 1] ?? null;
+  }
+
+  function getFloatingTOCElement<T extends HTMLElement>(selector: string) {
+    return getFloatingTOCWrapper()?.querySelector<T>(selector) ?? null;
   }
 
   function getHasHeadings() {
@@ -218,7 +223,7 @@ let { headings = [] } = Astro.props;
       const isExternalLink = href && !href.startsWith("#") && !href.startsWith("javascript:");
       
       if (isExternalLink && !window.tocInternalNavigation) {
-        const tocPanel = document.getElementById("floating-toc-panel");
+        const tocPanel = getFloatingTOCElement<HTMLElement>("#floating-toc-panel");
         if (!tocPanel || !tocPanel.contains(link)) {
           closeTOC();
         }
@@ -280,10 +285,11 @@ let { headings = [] } = Astro.props;
 
   // 初始化 FloatingTOC
   async function initFloatingTOC() {
-    window.FloatingTOC.btn = document.getElementById("floating-toc-btn");
-    window.FloatingTOC.panel = document.getElementById("floating-toc-panel");
+    const wrapper = getFloatingTOCWrapper();
+    window.FloatingTOC.btn = getFloatingTOCElement<HTMLButtonElement>("#floating-toc-btn");
+    window.FloatingTOC.panel = getFloatingTOCElement<HTMLElement>("#floating-toc-panel");
 
-    if (!window.FloatingTOC.btn || !window.FloatingTOC.panel) {
+    if (!wrapper || !window.FloatingTOC.btn || !window.FloatingTOC.panel) {
       return;
     }
 
@@ -306,7 +312,7 @@ let { headings = [] } = Astro.props;
       window.FloatingTOC.manager.init();
 
       // 设置点击事件 - 标记为 TOC 内部导航
-      const tocContent = document.getElementById("floating-toc-content");
+      const tocContent = wrapper.querySelector<HTMLElement>("#floating-toc-content");
       if (tocContent) {
         tocContent.addEventListener("click", (e) => {
           const target = e.target as Element | null;

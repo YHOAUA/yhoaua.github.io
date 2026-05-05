@@ -20,7 +20,7 @@ interface Post {
 		title: string;
 		tags: string[];
 		category?: string | null;
-		published: Date;
+		published: Date | string;
 	};
 }
 
@@ -40,9 +40,14 @@ let primaryFilter: ActiveFilter | null = null;
 let secondaryFilters: ActiveFilter[] = [];
 let filteredPostCount = 0;
 
-function formatDate(date: Date) {
-	const month = (date.getMonth() + 1).toString().padStart(2, "0");
-	const day = date.getDate().toString().padStart(2, "0");
+function toDate(value: Date | string) {
+	return value instanceof Date ? value : new Date(value);
+}
+
+function formatDate(date: Date | string) {
+	const resolvedDate = toDate(date);
+	const month = (resolvedDate.getMonth() + 1).toString().padStart(2, "0");
+	const day = resolvedDate.getDate().toString().padStart(2, "0");
 	return `${month}-${day}`;
 }
 
@@ -115,13 +120,16 @@ onMount(async () => {
 	// 按发布时间倒序排序，确保不受置顶影响
 	filteredPosts = filteredPosts
 		.slice()
-		.sort((a, b) => b.data.published.getTime() - a.data.published.getTime());
+		.sort(
+			(a, b) =>
+				toDate(b.data.published).getTime() - toDate(a.data.published).getTime(),
+		);
 
 	filteredPostCount = filteredPosts.length;
 
 	const grouped = filteredPosts.reduce(
 		(acc, post) => {
-			const year = post.data.published.getFullYear();
+			const year = toDate(post.data.published).getFullYear();
 			if (!acc[year]) {
 				acc[year] = [];
 			}
@@ -221,3 +229,4 @@ onMount(async () => {
 		</div>
 	{/each}
 </div>
+
