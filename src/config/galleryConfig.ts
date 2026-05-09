@@ -19,13 +19,13 @@ export const galleryConfig: GalleryConfig = {
 			description: "小さき勇者たち ガメラ时期的一组照片。",
 			date: "2026-05-04",
 			tags: ["写真集"],
-    },
-    {
+		},
+		{
 			id: "benxi-xue",
 			name: "本兮 雪之晨",
 			description: "“雪之晨”亦寓意希望与纯真。",
 			date: "2026-05-09",
-      tags: ["写真集"],
+			tags: ["写真集"],
 		},
 	],
 
