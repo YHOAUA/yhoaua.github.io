@@ -15,10 +15,17 @@ export const galleryConfig: GalleryConfig = {
 		// 每添加一个数组项就相当于添加了一个相册，记得在 public/gallery/ 目录下创建对应的子目录并放入图片
 		{
 			id: "kaho-step-in",
-			name: "夏帆 step in 写真集",
-			description: "夏帆写真集 step in，小さき勇者たち ガメラ时期的一组照片。",
+			name: "夏帆 step in",
+			description: "小さき勇者たち ガメラ时期的一组照片。",
 			date: "2026-05-04",
 			tags: ["写真集"],
+    },
+    {
+			id: "benxi-xue",
+			name: "本兮 雪之晨",
+			description: "“雪之晨”亦寓意希望与纯真。",
+			date: "2026-05-09",
+      tags: ["写真集"],
 		},
 	],
 
