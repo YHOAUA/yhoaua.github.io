@@ -59,8 +59,22 @@ const { filters, activeFilter, sectionId } = Astro.props;
         const items = document.querySelectorAll(`[data-item-section="${currentSectionId}"]`);
         items.forEach(item => {
           const itemStatus = item.dataset.itemStatus;
+          const rawFilters = item.dataset.itemFilters;
+          let itemFilters = [];
 
-          if (filter === 'all' || itemStatus === filter) {
+          if (rawFilters) {
+            try {
+              itemFilters = JSON.parse(rawFilters);
+            } catch {
+              itemFilters = [];
+            }
+          }
+
+          if (
+            filter === 'all' ||
+            itemStatus === filter ||
+            itemFilters.includes(filter)
+          ) {
             item.classList.remove('hidden');
             item.style.display = 'block';
           } else {

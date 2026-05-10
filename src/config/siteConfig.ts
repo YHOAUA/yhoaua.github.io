@@ -124,9 +124,9 @@ export const siteConfig: SiteConfig = {
 		// Bangumi用户ID
 		userId: "yhoauann",
 		// 条目类型排序，数组中的类型将按顺序优先展示
-		// 可选值: "anime" | "game" | "real" (当前页面已移除 book 和 music)
+		// 可选值: "anime" | "game" | "real" | "character" (当前页面已移除 book 和 music)
 		// 未列出的类型将按默认顺序排在后面
-		categoryOrder: ["anime", "game"],
+		categoryOrder: ["anime", "game", "character"],
 	},
 
 	// 页面开关配置 - 控制特定页面的访问权限，设为false会返回404
@@ -138,7 +138,7 @@ export const siteConfig: SiteConfig = {
 		sponsor: false,
 		// 留言板页面开关，需要配置评论系统
 		guestbook: true,
-		// 番组计划页面开关，当前仅保留追番和游戏，dev调试时只获取一页数据，build才会获取全部数据
+		// 番组计划页面开关，当前启用追番、游戏和人物；dev调试时只获取一页数据，build才会获取全部数据
 		bangumi: true,
 		// 相册页面开关
 		gallery: true,

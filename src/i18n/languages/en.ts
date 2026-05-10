@@ -100,11 +100,11 @@ export const en: Translation = {
 	[Key.updatedAt]: "Updated at",
 	[Key.readTime]: "Read time",
 	[Key.license]: "License",
-	[Key.bangumi]: "Bangumi",
+	[Key.bangumi]: "Collection",
 
 	// Bangumi Filter and Status Text
-	[Key.bangumiTitle]: "My Bangumi",
-	[Key.bangumiSubtitle]: "Record my ACG journey",
+	[Key.bangumiTitle]: "My Collection",
+	[Key.bangumiSubtitle]: "",
 	[Key.bangumiFilterAll]: "All",
 	[Key.bangumiFilterWatched]: "Watched",
 	[Key.bangumiFilterWatching]: "Watching",
@@ -156,6 +156,7 @@ export const en: Translation = {
 	[Key.bangumiCategoryMusic]: "Music",
 	[Key.bangumiCategoryGame]: "Game",
 	[Key.bangumiCategoryReal]: "Real",
+	[Key.bangumiCategoryCharacter]: "Character",
 
 	// Bangumi Data Update
 	[Key.bangumiLastUpdated]: "Data updated at",

@@ -1,0 +1,80 @@
+---
+import { Icon } from "astro-icon/components";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import type { CharacterProfile } from "@/types/character";
+
+interface Props {
+	character: CharacterProfile;
+}
+
+const { character } = Astro.props;
+const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(character.title)}`;
+const primaryRole = character.roles[0];
+const roleLine = character.roles.slice(0, 2).join(" / ");
+const monogram = character.title.trim().slice(0, 1) || "人";
+---
+
+<a
+	href={searchUrl}
+	target="_blank"
+	rel="noopener noreferrer nofollow"
+	class="character-card group relative block overflow-hidden rounded-xl border border-white/10 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
+>
+	<div class="aspect-2/3 relative overflow-hidden bg-(--btn-regular-bg)">
+		{character.image ? (
+			<img
+				src={character.image}
+				alt={character.title}
+				class="h-full w-full object-cover pointer-events-none transition-transform duration-500 group-hover:scale-105"
+				loading="lazy"
+				decoding="async"
+				referrerpolicy="no-referrer"
+			/>
+		) : (
+			<div class="relative flex h-full w-full items-center justify-center overflow-hidden bg-linear-to-br from-neutral-200 via-neutral-300 to-neutral-400 dark:from-neutral-700 dark:via-neutral-800 dark:to-neutral-900">
+				<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_48%)] dark:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_48%)]" />
+				<div class="absolute -right-6 top-5 text-8xl font-semibold tracking-[-0.08em] text-black/8 dark:text-white/8">
+					{monogram}
+				</div>
+				<div class="absolute left-3 top-3 rounded-full border border-black/8 bg-white/35 px-2 py-1 text-[0.65rem] font-medium text-neutral-700 backdrop-blur-sm dark:border-white/10 dark:bg-black/20 dark:text-neutral-200">
+					{primaryRole || "人物"}
+				</div>
+				<div class="relative flex flex-col items-center justify-center text-center">
+					<div class="text-6xl font-light text-neutral-600 dark:text-neutral-200">
+						{monogram}
+					</div>
+					<div class="mt-2 px-5 text-[0.7rem] tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
+						GOOGLE SEARCH
+					</div>
+				</div>
+			</div>
+		)}
+
+		{primaryRole && (
+			<div class="absolute top-2 left-2 rounded-full bg-(--primary) px-2 py-1 text-xs font-medium text-white">
+				{primaryRole}
+			</div>
+		)}
+
+		{character.pinned && (
+			<div class="absolute top-2 right-2 rounded-full bg-black/45 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
+				{i18n(I18nKey.pinned)}
+			</div>
+		)}
+
+		<div class="absolute inset-0 bg-gradient-to-t from-black/82 via-black/28 to-transparent" />
+		<div class="absolute bottom-0 left-0 right-0 p-3">
+			<h3 class="line-clamp-2 text-sm font-bold text-white drop-shadow-lg">
+				{character.title}
+			</h3>
+
+			{roleLine && (
+				<p class="mt-1 flex items-center gap-1 text-[0.68rem] text-white/78">
+					<Icon name="material-symbols:person-rounded" class="text-[0.8rem]" />
+					<span class="line-clamp-1">{roleLine}</span>
+				</p>
+			)}
+		</div>
+	</div>
+</a>

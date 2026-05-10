@@ -53,8 +53,31 @@ const projectsCollection = defineCollection({
 	}),
 });
 
+const charactersCollection = defineCollection({
+	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/characters" }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string().optional().default(""),
+		image: z.string().optional().default(""),
+		roles: z.array(z.string()).optional().default([]),
+		tags: z.array(z.string()).optional().default([]),
+		links: z
+			.array(
+				z.object({
+					label: z.string(),
+					url: z.url(),
+				}),
+			)
+			.optional()
+			.default([]),
+		pinned: z.boolean().optional().default(false),
+		draft: z.boolean().optional().default(false),
+	}),
+});
+
 export const collections = {
 	posts: postsCollection,
 	spec: specCollection,
 	projects: projectsCollection,
+	characters: charactersCollection,
 };

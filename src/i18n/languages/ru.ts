@@ -100,11 +100,11 @@ export const ru: Translation = {
 	[Key.updatedAt]: "Обновлено",
 	[Key.readTime]: "Время чтения",
 	[Key.license]: "Лицензия",
-	[Key.bangumi]: "Бангуми",
+	[Key.bangumi]: "Коллекция",
 
 	// Фильтр и статус Бангуми текст
-	[Key.bangumiTitle]: "Мой план группы",
-	[Key.bangumiSubtitle]: "Запись моего аниме путешествия",
+	[Key.bangumiTitle]: "Моя коллекция",
+	[Key.bangumiSubtitle]: "",
 	[Key.bangumiFilterAll]: "Все",
 	[Key.bangumiFilterWatched]: "Просмотрено",
 	[Key.bangumiFilterWatching]: "Смотрю",
@@ -156,6 +156,7 @@ export const ru: Translation = {
 	[Key.bangumiCategoryMusic]: "Музыка",
 	[Key.bangumiCategoryGame]: "Игра",
 	[Key.bangumiCategoryReal]: "Реальный",
+	[Key.bangumiCategoryCharacter]: "Персонажи",
 
 	// Обновление данных Бангуми
 	[Key.bangumiLastUpdated]: "Данные обновлены",

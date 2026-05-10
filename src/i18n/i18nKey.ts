@@ -149,6 +149,7 @@ enum I18nKey {
 	bangumiCategoryMusic = "bangumiCategoryMusic",
 	bangumiCategoryGame = "bangumiCategoryGame",
 	bangumiCategoryReal = "bangumiCategoryReal",
+	bangumiCategoryCharacter = "bangumiCategoryCharacter",
 
 	// 番组数据更新
 	bangumiLastUpdated = "bangumiLastUpdated",

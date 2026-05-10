@@ -1,12 +1,15 @@
 ---
+import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
 import BangumiSection from "@/components/pages/bangumi/BangumiSection.astro";
+import CharacterSection from "@/components/pages/bangumi/CharacterSection.astro";
 import TabNav from "@/components/pages/bangumi/TabNav.astro";
 import { siteConfig } from "@/config";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
 import type { MediaCollectionItem, SubjectType } from "@/types/bangumi";
+import type { CharacterProfile } from "@/types/character";
 import { fetchBangumiCollections } from "@/utils/bangumi-utils";
 import { formatDateI18nWithTime } from "@/utils/date-utils";
 
@@ -19,6 +22,27 @@ if (!siteConfig.pages.bangumi) {
 
 // 获取构建时间
 const buildTime = formatDateI18nWithTime(new Date());
+const characterEntries = await getCollection(
+	"characters",
+	({ data }) => !data.draft,
+);
+const characterProfiles: CharacterProfile[] = characterEntries
+	.map((entry) => ({
+		id: entry.id,
+		title: entry.data.title,
+		description: entry.data.description,
+		image: entry.data.image,
+		roles: entry.data.roles,
+		tags: entry.data.tags,
+		links: entry.data.links,
+		pinned: entry.data.pinned,
+	}))
+	.sort((a, b) => {
+		if (a.pinned !== b.pinned) {
+			return Number(b.pinned) - Number(a.pinned);
+		}
+		return a.title.localeCompare(b.title, "zh-CN");
+	});
 
 ////////////// Bangumi 配置 ////////////////////////
 const bangumiConfig = {
@@ -30,6 +54,7 @@ const collectionConfig = {
 	categories: {
 		anime: true,
 		game: true,
+		character: true,
 		real: false,
 	},
 	// 数据获取设置
@@ -42,18 +67,22 @@ const collectionConfig = {
 //////////////////////////////////////////////////
 
 // 分类映射
-const categoryMap = {
+type BangumiRemoteCategoryInfo = {
+	id: string;
+	name: string;
+	subjectType: SubjectType;
+};
+
+const categoryMap: Record<string, BangumiRemoteCategoryInfo | undefined> = {
 	anime: {
 		id: "anime",
 		name: i18n(I18nKey.bangumiCategoryAnime),
 		subjectType: 2,
 	},
 	game: { id: "game", name: i18n(I18nKey.bangumiCategoryGame), subjectType: 4 },
+	character: undefined,
 	real: { id: "real", name: i18n(I18nKey.bangumiCategoryReal), subjectType: 6 },
-} satisfies Record<
-	string,
-	{ id: string; name: string; subjectType: SubjectType }
->;
+};
 
 // 获取所有启用分类的数据
 const bangumiData: Record<string, MediaCollectionItem[]> = {};
@@ -75,14 +104,40 @@ const isDev = import.meta.env.DEV;
 for (const [categoryKey, enabled] of Object.entries(
 	collectionConfig.categories,
 )) {
-	if (enabled && categoryMap[categoryKey as keyof typeof categoryMap]) {
+	if (!enabled) {
+		continue;
+	}
+
+	if (categoryKey === "character") {
+		tabs.push({
+			id: categoryKey,
+			name: i18n(I18nKey.bangumiCategoryCharacter),
+			count: characterProfiles.length,
+		});
+		continue;
+	}
+
+	if (categoryMap[categoryKey as keyof typeof categoryMap]) {
 		const categoryInfo = categoryMap[categoryKey as keyof typeof categoryMap];
+		if (!categoryInfo) {
+			continue;
+		}
+		if (!categoryInfo.subjectType) {
+			tabs.push({
+				id: categoryKey,
+				name: categoryInfo.name,
+				count: 0,
+			});
+			continue;
+		}
+		const subjectType = categoryInfo.subjectType;
+
 		const fetcher = isBangumiUserConfigured
 			? () =>
 					fetchBangumiCollections({
 						// biome-ignore lint/style/noNonNullAssertion: Checked above
 						username: bangumiConfig.username!,
-						subjectType: categoryInfo.subjectType,
+						subjectType,
 						apiUrl: bangumiConfig.apiUrl,
 						limit: collectionConfig.pagination.limit,
 						delay: collectionConfig.pagination.delay,
@@ -136,7 +191,7 @@ if (categoryOrder.length > 0) {
 const activeTab = tabs[0]?.id || "anime";
 ---
 
-<MainGridLayout title={i18n(I18nKey.bangumi)} description={i18n(I18nKey.bangumiSubtitle)}>
+<MainGridLayout title={i18n(I18nKey.bangumi)} description="">
   <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
     <div class="card-base z-10 px-9 py-6 relative w-full">
         <!-- 页面标题 -->
@@ -150,9 +205,11 @@ const activeTab = tabs[0]?.id || "anime";
                         {i18n(I18nKey.bangumi)}
                     </div>
                 </div>
-                <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                    {i18n(I18nKey.bangumiSubtitle)}
-                </p>
+                {i18n(I18nKey.bangumiSubtitle) && (
+                  <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                      {i18n(I18nKey.bangumiSubtitle)}
+                  </p>
+                )}
                 <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-2">
                     {i18n(I18nKey.bangumiLastUpdated)} {buildTime}
                 </p>
@@ -165,12 +222,21 @@ const activeTab = tabs[0]?.id || "anime";
 
           <!-- 内容区域 -->
           {tabs.map((tab) => (
-                      <BangumiSection
-            sectionId={tab.id}
-            items={bangumiData[tab.id] || []}
-            isActive={tab.id === activeTab}
-            itemsPerPage={12}
-          />
+						tab.id === "character" ? (
+							<CharacterSection
+								sectionId={tab.id}
+								items={characterProfiles}
+								isActive={tab.id === activeTab}
+								itemsPerPage={12}
+							/>
+						) : (
+							<BangumiSection
+								sectionId={tab.id}
+								items={bangumiData[tab.id] || []}
+								isActive={tab.id === activeTab}
+								itemsPerPage={12}
+							/>
+						)
           ))}
         </>
       ) : (

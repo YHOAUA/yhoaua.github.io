@@ -97,11 +97,11 @@ export const zh_TW: Translation = {
 	[Key.updatedAt]: "更新於",
 	[Key.readTime]: "閱讀時長",
 	[Key.license]: "許可協議",
-	[Key.bangumi]: "番組計劃",
+	[Key.bangumi]: "收藏",
 
 	// 番組計劃
-	[Key.bangumiTitle]: "我的番組計劃",
-	[Key.bangumiSubtitle]: "記錄我的二次元之旅",
+	[Key.bangumiTitle]: "我的收藏",
+	[Key.bangumiSubtitle]: "",
 
 	// 番組計劃篩選和狀態文本
 	[Key.bangumiFilterAll]: "全部",
@@ -153,6 +153,7 @@ export const zh_TW: Translation = {
 	[Key.bangumiCategoryMusic]: "音樂",
 	[Key.bangumiCategoryGame]: "遊戲",
 	[Key.bangumiCategoryReal]: "三次元",
+	[Key.bangumiCategoryCharacter]: "人物",
 
 	// 番組數據更新
 	[Key.bangumiLastUpdated]: "數據更新於",

@@ -100,11 +100,11 @@ export const ja: Translation = {
 	[Key.updatedAt]: "更新日",
 	[Key.readTime]: "読了時間",
 	[Key.license]: "ライセンス",
-	[Key.bangumi]: "バングミ",
+	[Key.bangumi]: "コレクション",
 
 	// バングミフィルターと状態文本
-	[Key.bangumiTitle]: "私のバングミ",
-	[Key.bangumiSubtitle]: "私の二次元の旅を記録する",
+	[Key.bangumiTitle]: "私のコレクション",
+	[Key.bangumiSubtitle]: "",
 	[Key.bangumiFilterAll]: "すべて",
 	[Key.bangumiFilterWatched]: "見た",
 	[Key.bangumiFilterWatching]: "視聴中",
@@ -156,6 +156,7 @@ export const ja: Translation = {
 	[Key.bangumiCategoryMusic]: "音楽",
 	[Key.bangumiCategoryGame]: "ゲーム",
 	[Key.bangumiCategoryReal]: "実写",
+	[Key.bangumiCategoryCharacter]: "キャラクター",
 
 	// バングミデータ更新
 	[Key.bangumiLastUpdated]: "データ更新",
