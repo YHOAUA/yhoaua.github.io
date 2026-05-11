@@ -1,6 +1,6 @@
 ---
-title: 樱井政博
-image: "/image/characters/Sakurai Masahiro.jpg"
+title: 青沼英二
+image: "/image/characters/Eiji Aonuma.webp"
 roles:
   - 游戏设计师
 links: []

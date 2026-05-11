@@ -1,6 +1,6 @@
 ---
-title: 樱井政博
-image: "/image/characters/Sakurai Masahiro.jpg"
+title: 席德·梅尔
+image: "/image/characters/Sid Meier.jpg"
 roles:
   - 游戏设计师
 links: []
