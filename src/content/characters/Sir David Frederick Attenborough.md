@@ -1,5 +1,5 @@
 ---
-title: 克里斯托弗·诺兰
+title: 大卫·爱登堡
 image: "/image/characters/Sir David Frederick Attenborough.jpg"
 roles:
   - 科学家
