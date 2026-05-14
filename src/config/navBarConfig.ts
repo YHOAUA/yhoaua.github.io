@@ -24,6 +24,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		url: "/my/",
 		icon: "material-symbols:person",
 		children: [
+			// 根据配置决定是否添加新闻，在siteConfig关闭pages.news时导航栏不显示新闻
+			...(siteConfig.pages.news ? [LinkPreset.News] : []),
+
 			// 根据配置决定是否添加项目，在siteConfig关闭pages.projects时导航栏不显示项目
 			...(siteConfig.pages.projects ? [LinkPreset.Projects] : []),
 

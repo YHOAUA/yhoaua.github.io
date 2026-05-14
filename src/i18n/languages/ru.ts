@@ -58,6 +58,25 @@ export const ru: Translation = {
 	[Key.guestbookDescription]:
 		"Добро пожаловать, оставьте свой след здесь, поделитесь своими мыслями и предложениями",
 	[Key.projects]: "Проекты",
+	[Key.news]: "Новости",
+	[Key.newsDescription]:
+		"Страница с агрегированными горячими новостями и обсуждениями. Сейчас подключены China Buzzing и Hacker News.",
+	[Key.newsCategoryChina]: "China Buzzing",
+	[Key.newsCategoryHackerNews]: "Hacker News",
+	[Key.newsCategoryWorldNews]: "World News",
+	[Key.newsLatestUpdated]: "Источник обновлен",
+	[Key.newsOpenSource]: "Открыть источник",
+	[Key.newsItems]: "материалов",
+	[Key.newsSources]: "источников",
+	[Key.newsEmpty]: "Новостей пока нет",
+	[Key.newsEmptyDescription]:
+		"Для этой категории сейчас нет данных. Попробуйте позже или откройте исходный сайт напрямую.",
+	[Key.newsSnapshotHint]:
+		"Эта страница загружает материалы прямо в браузере. Откройте карточку или исходный сайт, чтобы посмотреть полный поток.",
+	[Key.newsRefresh]: "Обновить",
+	[Key.newsRefreshing]: "Обновление...",
+	[Key.newsLastRefreshed]: "Страница обновлена",
+	[Key.newsAutoRefresh]: "Интервал автообновления",
 	[Key.projectsDescription]:
 		"Здесь собраны мои работы, open-source проекты и учебные эксперименты.",
 	[Key.projectsFeatured]: "Избранные проекты",

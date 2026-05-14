@@ -89,6 +89,7 @@ export type SiteConfig = {
 		sponsor: boolean; // 赞助页面开关
 		guestbook: boolean; // 留言板页面开关
 		bangumi: boolean;
+		news: boolean; // 新闻页面开关
 		gallery: boolean; // 相册页面开关
 		projects: boolean; // 项目页面开关
 	};
@@ -181,6 +182,7 @@ export enum LinkPreset {
 	Bangumi = 6,
 	Gallery = 7,
 	Projects = 8,
+	News = 9,
 }
 
 export type NavBarLink = {
