@@ -15,6 +15,7 @@ const title = i18n(I18nKey.news);
 const localizedCategoryLabels = {
 	china: i18n(I18nKey.newsCategoryChina),
 	hn: i18n(I18nKey.newsCategoryHackerNews),
+	news: i18n(I18nKey.newsCategoryWorldNews),
 } as const;
 
 const clientConfig = JSON.stringify({
@@ -206,6 +207,18 @@ const clientConfig = JSON.stringify({
 			};
 		}
 
+		function getCommentsUrl(item, sourceId) {
+			if (sourceId !== "hn") return "";
+
+			const linkCandidates = Array.isArray(item?._links) ? item._links : [];
+			const matchedLink = linkCandidates.find((entry) =>
+				typeof entry?.url === "string" &&
+				entry.url.includes("news.ycombinator.com/item?id="),
+			);
+
+			return matchedLink?.url || "";
+		}
+
 		function createNewsRow(item) {
 			const article = document.createElement("article");
 			article.className =
@@ -254,8 +267,18 @@ const clientConfig = JSON.stringify({
 				meta.append(publishedAt);
 			}
 			if (typeof item.comments === "number") {
-				const comments = document.createElement("span");
+				const comments = item.commentsUrl
+					? document.createElement("a")
+					: document.createElement("span");
 				comments.textContent = `💬 ${item.comments}`;
+
+				if (comments instanceof HTMLAnchorElement) {
+					comments.href = item.commentsUrl;
+					comments.target = "_blank";
+					comments.rel = "noopener noreferrer";
+					comments.className = "hover:text-(--primary) transition-colors";
+				}
+
 				meta.append(comments);
 			}
 
@@ -334,6 +357,7 @@ const clientConfig = JSON.stringify({
 											: "",
 										score: item._score,
 										comments: item._num_comments,
+										commentsUrl: getCommentsUrl(item, source.id),
 										heatValue: heatData.value,
 										heatLabel: heatData.label,
 									};

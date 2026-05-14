@@ -1,4 +1,4 @@
-export type NewsSourceId = "china" | "hn";
+export type NewsSourceId = "china" | "hn" | "news";
 
 export type NewsSourceDefinition = {
 	id: NewsSourceId;
@@ -9,6 +9,13 @@ export type NewsSourceDefinition = {
 };
 
 export const NEWS_SOURCES: NewsSourceDefinition[] = [
+	{
+		id: "news",
+		label: "国外新闻",
+		icon: "material-symbols:language",
+		feedUrl: "https://news.buzzing.cc/feed.json",
+		homepageUrl: "https://news.buzzing.cc/",
+	},
 	{
 		id: "china",
 		label: "中国热榜",
