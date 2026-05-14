@@ -1,10 +1,8 @@
 ---
 title: "我的博客"
-category: 开源
+category: 网站
 tags:
-  - Astro
-  - Theme
-  - Customization
+  - blog
 repoUrl: "https://github.com/YHOAUA/yhoaua.github.io"
 status: active # archived
 ---

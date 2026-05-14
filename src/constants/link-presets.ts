@@ -38,11 +38,6 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
 		url: "/bangumi/",
 		icon: "material-symbols:movie",
 	},
-	[LinkPreset.News]: {
-		name: i18n(I18nKey.news),
-		url: "/news/",
-		icon: "material-symbols:newspaper",
-	},
 	[LinkPreset.Gallery]: {
 		name: i18n(I18nKey.gallery),
 		url: "/gallery/",

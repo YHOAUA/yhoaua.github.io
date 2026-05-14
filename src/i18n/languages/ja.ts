@@ -58,25 +58,6 @@ export const ja: Translation = {
 	[Key.guestbookDescription]:
 		"ここに足跡を残して、あなたの考えや提案を共有してください",
 	[Key.projects]: "プロジェクト",
-	[Key.news]: "ニュース",
-	[Key.newsDescription]:
-		"複数ソースの話題をまとめたニュースページです。現在は China Buzzing と Hacker News を表示します。",
-	[Key.newsCategoryChina]: "China Buzzing",
-	[Key.newsCategoryHackerNews]: "Hacker News",
-	[Key.newsCategoryWorldNews]: "World News",
-	[Key.newsLatestUpdated]: "ソース更新時刻",
-	[Key.newsOpenSource]: "元サイトを開く",
-	[Key.newsItems]: "件",
-	[Key.newsSources]: "ソース",
-	[Key.newsEmpty]: "ニュースはまだありません",
-	[Key.newsEmptyDescription]:
-		"このカテゴリには表示できるデータがありません。しばらくしてから再度確認するか、元サイトを直接開いてください。",
-	[Key.newsSnapshotHint]:
-		"このページはブラウザ上でリアルタイムに内容を取得します。カードまたは元サイトから全文を確認できます。",
-	[Key.newsRefresh]: "今すぐ更新",
-	[Key.newsRefreshing]: "更新中...",
-	[Key.newsLastRefreshed]: "ページ更新時刻",
-	[Key.newsAutoRefresh]: "自動更新間隔",
 	[Key.projectsDescription]:
 		"制作物、オープンソース、練習用のプロジェクトをまとめて紹介します。",
 	[Key.projectsFeatured]: "注目のプロジェクト",

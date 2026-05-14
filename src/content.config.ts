@@ -41,7 +41,7 @@ const projectsCollection = defineCollection({
 	schema: z.object({
 		title: z.string().optional(),
 		description: z.string().optional(),
-		category: z.enum(["作品", "开源", "练习"]),
+		category: z.string().trim().min(1),
 		tags: z.array(z.string()).optional().default([]),
 		date: z.date().optional(),
 		featured: z.boolean().optional().default(false),
