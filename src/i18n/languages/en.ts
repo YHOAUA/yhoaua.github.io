@@ -58,6 +58,25 @@ export const en: Translation = {
 	[Key.guestbookDescription]:
 		"Welcome to leave your mark here, share your thoughts and suggestions",
 	[Key.projects]: "Projects",
+	[Key.news]: "News",
+	[Key.newsDescription]:
+		"An aggregated page for trending news and discussions, currently wired to China Buzzing and Hacker News.",
+	[Key.newsCategoryChina]: "China Buzzing",
+	[Key.newsCategoryHackerNews]: "Hacker News",
+	[Key.newsCategoryWorldNews]: "World News",
+	[Key.newsLatestUpdated]: "Source updated",
+	[Key.newsOpenSource]: "Open Source Site",
+	[Key.newsItems]: "items",
+	[Key.newsSources]: "sources",
+	[Key.newsEmpty]: "No news yet",
+	[Key.newsEmptyDescription]:
+		"There is no data available for this category right now. Try again later or open the source site directly.",
+	[Key.newsSnapshotHint]:
+		"This page fetches items live in the browser. Open a card or the source site for the full article stream.",
+	[Key.newsRefresh]: "Refresh Now",
+	[Key.newsRefreshing]: "Refreshing...",
+	[Key.newsLastRefreshed]: "Page refreshed at",
+	[Key.newsAutoRefresh]: "Auto refresh",
 	[Key.projectsDescription]:
 		"A curated collection of my work, open-source contributions, and practice projects.",
 	[Key.projectsFeatured]: "Featured Projects",

@@ -67,6 +67,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
 );
 
 // 处理导航栏 Logo 图片
+const hasNavbarLogo = Boolean(siteConfig.navbar.logo);
 const logoValue = siteConfig.navbar.logo?.value || "";
 const isLocalSrcLogo =
 	siteConfig.navbar.logo?.type === "image" &&
@@ -100,9 +101,9 @@ if (isLocalSrcLogo) {
                     "flex flex-row items-center text-md",
                     siteConfig.navbar.followTheme ? "text-(--primary)" : "dark:text-white text-black"
                 ]}>
-                                    {siteConfig.navbar.logo?.type === "icon" ? (
+                                    {hasNavbarLogo && siteConfig.navbar.logo?.type === "icon" ? (
                                         <Icon name={siteConfig.navbar.logo.value || "material-symbols:home-pin-outline"} is:inline class="text-[1.75rem] mb-1 mr-2" />
-                                    ) : siteConfig.navbar.logo?.type === "image" && logoImg ? (
+                                    ) : hasNavbarLogo && siteConfig.navbar.logo?.type === "image" && logoImg ? (
                                         <Picture
                                             src={logoImg}
                                             alt={siteConfig.navbar.logo.alt || siteConfig.title}
@@ -113,13 +114,11 @@ if (isLocalSrcLogo) {
                                             loading="eager"
                                             fetchpriority="high"
                                         />
-                                    ) : siteConfig.navbar.logo?.type === "image" ? (
+                                    ) : hasNavbarLogo && siteConfig.navbar.logo?.type === "image" ? (
                                         <img src={url(siteConfig.navbar.logo.value)} alt={siteConfig.navbar.logo.alt || siteConfig.title} class="h-7 w-7 mb-1 mr-2 object-contain" fetchpriority="high" />
-                                    ) : siteConfig.navbar.logo?.type === "url" ? (
+                                    ) : hasNavbarLogo && siteConfig.navbar.logo?.type === "url" ? (
                                         <img src={siteConfig.navbar.logo.value} alt={siteConfig.navbar.logo.alt || siteConfig.title} class="h-7 w-7 mb-1 mr-2 object-contain" fetchpriority="high" />
-                                    ) : (
-                                        <Icon name="material-symbols:home-pin-outline" is:inline class="text-[1.75rem] mb-1 mr-2" />
-                                    )}
+                                    ) : null}
                     {navbarTitle}
                 </div>
             </a>

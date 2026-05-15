@@ -71,7 +71,11 @@ const monogram = character.title.trim().slice(0, 1) || "人";
 
 			{roleLine && (
 				<p class="mt-1 flex items-center gap-1 text-[0.68rem] text-white/78">
-					<Icon name="material-symbols:person-rounded" class="text-[0.8rem]" />
+					<Icon
+						name="material-symbols:person-rounded"
+						is:inline
+						class="text-[0.8rem]"
+					/>
 					<span class="line-clamp-1">{roleLine}</span>
 				</p>
 			)}

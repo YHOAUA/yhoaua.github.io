@@ -44,7 +44,6 @@ const projectsCollection = defineCollection({
 		category: z.string().trim().min(1),
 		tags: z.array(z.string()).optional().default([]),
 		date: z.date().optional(),
-		featured: z.boolean().optional().default(false),
 		status: z.enum(["active", "maintained", "archived"]).optional(),
 		techStack: z.array(z.string()).optional().default([]),
 		demoUrl: z.url().optional(),

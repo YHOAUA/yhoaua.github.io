@@ -26,7 +26,6 @@ export type ResolvedProject = {
 	techStack: string[];
 	demoUrl?: string;
 	repoUrl?: string;
-	featured: boolean;
 };
 
 type RepoRef = {
@@ -199,7 +198,6 @@ export async function resolveProjectEntries(
 					normalizeHomepage(repoData?.homepage) ||
 					undefined,
 				repoUrl: entry.data.repoUrl || repoData?.html_url,
-				featured: entry.data.featured,
 			};
 		}),
 	);
