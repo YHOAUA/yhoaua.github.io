@@ -6,4 +6,6 @@ roles:
 links: []
 pinned: false
 draft: false
+works:
+  - 海街日记
 ---

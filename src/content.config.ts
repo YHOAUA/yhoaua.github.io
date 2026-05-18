@@ -59,6 +59,7 @@ const charactersCollection = defineCollection({
 		description: z.string().optional().default(""),
 		image: z.string().optional().default(""),
 		roles: z.array(z.string()).optional().default([]),
+		works: z.array(z.string()).optional().default([]),
 		tags: z.array(z.string()).optional().default([]),
 		links: z
 			.array(

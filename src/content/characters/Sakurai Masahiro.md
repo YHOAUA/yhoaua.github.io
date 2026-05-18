@@ -6,4 +6,7 @@ roles:
 links: []
 pinned: false
 draft: false
+works:
+  - 任天堂明星大乱斗
+  - 星之卡比
 ---

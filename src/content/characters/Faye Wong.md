@@ -6,5 +6,7 @@ roles:
 links: []
 pinned: false
 draft: false
+works:
+  - 红豆
 ---
 Faye Wong

@@ -5,6 +5,9 @@ image: ""
 roles:
   - 歌手
   - 演员
+works:
+  - 代表作 A
+  - 代表作 B
 tags:
   - 示例
 links:

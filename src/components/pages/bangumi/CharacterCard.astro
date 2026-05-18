@@ -12,15 +12,23 @@ const { character } = Astro.props;
 const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(character.title)}`;
 const primaryRole = character.roles[0];
 const roleLine = character.roles.slice(0, 2).join(" / ");
+const workItems = character.works.map((work) => ({
+	label: work,
+	url: `https://www.google.com/search?q=${encodeURIComponent(`${character.title} ${work}`)}`,
+}));
 const monogram = character.title.trim().slice(0, 1) || "人";
 ---
 
-<a
-	href={searchUrl}
-	target="_blank"
-	rel="noopener noreferrer nofollow"
+<div
 	class="character-card group relative block overflow-hidden rounded-xl border border-white/10 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
 >
+	<a
+		href={searchUrl}
+		target="_blank"
+		rel="noopener noreferrer nofollow"
+		aria-label={`搜索 ${character.title}`}
+		class="absolute inset-0 z-10"
+	/>
 	<div class="aspect-2/3 relative overflow-hidden bg-(--btn-regular-bg)">
 		{character.image ? (
 			<img
@@ -52,19 +60,19 @@ const monogram = character.title.trim().slice(0, 1) || "人";
 		)}
 
 		{primaryRole && (
-			<div class="absolute top-2 left-2 rounded-full bg-(--primary) px-2 py-1 text-xs font-medium text-white">
+			<div class="pointer-events-none absolute top-2 left-2 z-20 rounded-full bg-(--primary) px-2 py-1 text-xs font-medium text-white">
 				{primaryRole}
 			</div>
 		)}
 
 		{character.pinned && (
-			<div class="absolute top-2 right-2 rounded-full bg-black/45 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
+			<div class="pointer-events-none absolute top-2 right-2 z-20 rounded-full bg-black/45 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
 				{i18n(I18nKey.pinned)}
 			</div>
 		)}
 
-		<div class="absolute inset-0 bg-gradient-to-t from-black/82 via-black/28 to-transparent" />
-		<div class="absolute bottom-0 left-0 right-0 p-3">
+		<div class="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/82 via-black/28 to-transparent" />
+		<div class="pointer-events-none absolute bottom-0 left-0 right-0 z-20 p-3">
 			<h3 class="line-clamp-2 text-sm font-bold text-white drop-shadow-lg">
 				{character.title}
 			</h3>
@@ -79,6 +87,26 @@ const monogram = character.title.trim().slice(0, 1) || "人";
 					<span class="line-clamp-1">{roleLine}</span>
 				</p>
 			)}
+
+			{workItems.length > 0 && (
+				<p class="mt-1 text-[0.68rem] text-white/78">
+					<span class="pointer-events-auto leading-tight break-words">
+						{workItems.map((work, index) => (
+							<>
+								<a
+									href={work.url}
+									target="_blank"
+									rel="noopener noreferrer nofollow"
+									class="underline-offset-2 hover:text-white hover:underline"
+								>
+									{work.label}
+								</a>
+								{index < workItems.length - 1 && <span class="text-white/55"> / </span>}
+							</>
+						))}
+					</span>
+				</p>
+			)}
 		</div>
 	</div>
-</a>
+</div>

@@ -10,4 +10,9 @@
 [bangumi](https://bgm.tv/user/yhoauann) / [steam](https://steamcommunity.com/id/yhoauann/)
 
 
-
+### 随机飘落
+- 电影
+- 动漫
+- 文学
+- 哲学
+- 技术

@@ -6,4 +6,7 @@ roles:
 links: []
 pinned: false
 draft: false
+works:
+  - 黑暗之魂
+  - 血源诅咒
 ---

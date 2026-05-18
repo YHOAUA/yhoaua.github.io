@@ -9,6 +9,7 @@ export type CharacterProfile = {
 	description: string;
 	image: string;
 	roles: string[];
+	works: string[];
 	tags: string[];
 	links: CharacterLink[];
 	pinned: boolean;
