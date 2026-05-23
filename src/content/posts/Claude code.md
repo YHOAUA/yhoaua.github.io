@@ -1,9 +1,9 @@
 ---
-title: Claude code 学习笔记
+title: Claude Code 学习笔记
 published: 2026-05-08
-description: '记录我的Claude code 学习笔记'
+description: '记录我的Claude Code 学习笔记'
 image: ''
-tags: [claude code]
+tags: [vibe]
 category: 'AI'
 draft: false 
 ---
