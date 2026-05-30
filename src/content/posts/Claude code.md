@@ -4,7 +4,7 @@ published: 2026-05-08
 description: '记录我的Claude Code 学习笔记'
 image: ''
 tags: [vibe]
-category: 'AI'
+category: '技术'
 draft: false 
 ---
 ## 入门
