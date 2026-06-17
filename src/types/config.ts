@@ -89,9 +89,9 @@ export type SiteConfig = {
 		sponsor: boolean; // 赞助页面开关
 		guestbook: boolean; // 留言板页面开关
 		bangumi: boolean;
-		news: boolean; // 新闻页面开关
 		gallery: boolean; // 相册页面开关
 		projects: boolean; // 项目页面开关
+		websites: boolean; // 网站导航页面开关
 	};
 
 	// 文章列表布局配置
@@ -182,7 +182,7 @@ export enum LinkPreset {
 	Bangumi = 6,
 	Gallery = 7,
 	Projects = 8,
-	News = 9,
+	Websites = 9,
 }
 
 export type NavBarLink = {
@@ -683,6 +683,25 @@ export type FriendsPageConfig = {
 	description?: string; // 页面描述，留空则使用 i18n 中的翻译
 	showCustomContent?: boolean; // 是否显示自定义内容（friends.mdx）
 	showComment?: boolean; // 是否显示评论区，默认 true
+	randomizeSort?: boolean; // 是否打乱排序，如果为 true，将忽略 weight，随机排序
+};
+
+// 网站导航配置
+export type WebsiteLink = {
+	title: string; // 网站标题
+	imgurl: string; // 网站图标/logo URL
+	desc: string; // 网站描述
+	siteurl: string; // 网站地址
+	tags?: string[]; // 标签数组
+	weight: number; // 权重，数字越大排序越靠前
+	enabled: boolean; // 是否启用
+};
+
+export type WebsitesPageConfig = {
+	title?: string; // 页面标题，留空则使用 i18n 中的翻译
+	description?: string; // 页面描述，留空则使用 i18n 中的翻译
+	showCustomContent?: boolean; // 是否显示自定义内容（websites.md）
+	showComment?: boolean; // 是否显示评论区，默认 false
 	randomizeSort?: boolean; // 是否打乱排序，如果为 true，将忽略 weight，随机排序
 };
 
