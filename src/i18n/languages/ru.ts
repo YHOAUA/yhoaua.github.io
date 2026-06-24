@@ -60,8 +60,6 @@ export const ru: Translation = {
 	[Key.projects]: "Проекты",
 	[Key.projectsDescription]:
 		"Здесь собраны мои работы, open-source проекты и учебные эксперименты.",
-	[Key.websites]: "Навигация по сайтам",
-	[Key.websitesDescription]: "Коллекция полезных сайтов и инструментов",
 	[Key.projectsFeatured]: "Избранные проекты",
 	[Key.projectsTotal]: "Всего проектов",
 	[Key.projectsFeaturedCount]: "Избранные",

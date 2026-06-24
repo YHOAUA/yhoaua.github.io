@@ -91,7 +91,6 @@ export type SiteConfig = {
 		bangumi: boolean;
 		gallery: boolean; // 相册页面开关
 		projects: boolean; // 项目页面开关
-		websites: boolean; // 网站导航页面开关
 	};
 
 	// 文章列表布局配置
@@ -182,7 +181,6 @@ export enum LinkPreset {
 	Bangumi = 6,
 	Gallery = 7,
 	Projects = 8,
-	Websites = 9,
 }
 
 export type NavBarLink = {
@@ -697,13 +695,6 @@ export type WebsiteLink = {
 	enabled: boolean; // 是否启用
 };
 
-export type WebsitesPageConfig = {
-	title?: string; // 页面标题，留空则使用 i18n 中的翻译
-	description?: string; // 页面描述，留空则使用 i18n 中的翻译
-	showCustomContent?: boolean; // 是否显示自定义内容（websites.md）
-	showComment?: boolean; // 是否显示评论区，默认 false
-	randomizeSort?: boolean; // 是否打乱排序，如果为 true，将忽略 weight，随机排序
-};
 
 // 音乐播放器配置
 export type MusicPlayerConfig = {

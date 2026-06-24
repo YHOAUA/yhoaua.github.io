@@ -27,9 +27,6 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 根据配置决定是否添加项目，在siteConfig关闭pages.projects时导航栏不显示项目
 			...(siteConfig.pages.projects ? [LinkPreset.Projects] : []),
 
-			// 根据配置决定是否添加网站导航，在siteConfig关闭pages.websites时导航栏不显示网站导航
-			...(siteConfig.pages.websites ? [LinkPreset.Websites] : []),
-
 			// 根据配置决定是否添加相册，在siteConfig关闭pages.gallery时导航栏不显示相册
 			...(siteConfig.pages.gallery ? [LinkPreset.Gallery] : []),
 

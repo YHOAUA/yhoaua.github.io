@@ -60,8 +60,6 @@ export const en: Translation = {
 	[Key.projects]: "Projects",
 	[Key.projectsDescription]:
 		"A curated collection of my work, open-source contributions, and practice projects.",
-	[Key.websites]: "Websites",
-	[Key.websitesDescription]: "A collection of useful websites and tools",
 	[Key.projectsFeatured]: "Featured Projects",
 	[Key.projectsTotal]: "Total Projects",
 	[Key.projectsFeaturedCount]: "Featured",

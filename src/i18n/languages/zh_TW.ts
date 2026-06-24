@@ -57,8 +57,6 @@ export const zh_TW: Translation = {
 	[Key.guestbookDescription]: "歡迎在這裡留下你的足跡，分享你的想法和建議",
 	[Key.projects]: "項目",
 	[Key.projectsDescription]: "這裡集中展示我做過的一些作品、開源和練習項目。",
-	[Key.websites]: "網站",
-	[Key.websitesDescription]: "收藏一些好用的網站和工具",
 	[Key.projectsFeatured]: "精選項目",
 	[Key.projectsTotal]: "項目總數",
 	[Key.projectsFeaturedCount]: "精選項目",

@@ -48,9 +48,4 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
 		url: "/projects/",
 		icon: "material-symbols:deployed-code",
 	},
-	[LinkPreset.Websites]: {
-		name: i18n(I18nKey.websites),
-		url: "/websites/",
-		icon: "material-symbols:link",
-	},
 };

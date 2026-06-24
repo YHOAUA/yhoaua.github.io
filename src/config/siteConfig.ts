@@ -139,8 +139,6 @@ export const siteConfig: SiteConfig = {
 		gallery: true,
 		// 项目页面开关
 		projects: true,
-		// 网站导航页面开关
-		websites: true,
 	},
 
 	// 文章列表布局配置

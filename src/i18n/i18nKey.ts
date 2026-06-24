@@ -82,8 +82,6 @@ enum I18nKey {
 	bangumi = "bangumi",
 	projects = "projects",
 	projectsDescription = "projectsDescription",
-	websites = "websites",
-	websitesDescription = "websitesDescription",
 	projectsFeatured = "projectsFeatured",
 	projectsTotal = "projectsTotal",
 	projectsFeaturedCount = "projectsFeaturedCount",

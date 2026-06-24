@@ -60,8 +60,6 @@ export const ja: Translation = {
 	[Key.projects]: "プロジェクト",
 	[Key.projectsDescription]:
 		"制作物、オープンソース、練習用のプロジェクトをまとめて紹介します。",
-	[Key.websites]: "ウェブサイトナビ",
-	[Key.websitesDescription]: "便利なウェブサイトとツールのコレクション",
 	[Key.projectsFeatured]: "注目のプロジェクト",
 	[Key.projectsTotal]: "総プロジェクト数",
 	[Key.projectsFeaturedCount]: "注目",

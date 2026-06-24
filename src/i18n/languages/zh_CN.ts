@@ -57,8 +57,6 @@ export const zh_CN: Translation = {
 	[Key.guestbookDescription]: "欢迎在这里留下你的足迹，分享你的想法和建议",
 	[Key.projects]: "项目",
 	[Key.projectsDescription]: "这里集中展示我做过的一些作品、开源和练习项目。",
-	[Key.websites]: "网站",
-	[Key.websitesDescription]: "收藏一些好用的网站和工具",
 	[Key.projectsFeatured]: "精选项目",
 	[Key.projectsTotal]: "项目总数",
 	[Key.projectsFeaturedCount]: "精选项目",
