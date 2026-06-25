@@ -114,13 +114,60 @@ const managerConfigStr = JSON.stringify({
         currentLrcIndex: -1,
         initialized: false,
         initializing: false,
-        error: null
+        error: null,
+        // 随机播放队列
+        shuffleQueue: [],
+        shuffleIndex: 0
     };
 
     // Map config playMode string to number
     if (config.playMode === 'random') state.playMode = 2;
     else if (config.playMode === 'one') state.playMode = 1;
     else state.playMode = 0;
+
+    // ── Shuffle helpers ──────────────────────────────────────
+    function generateShuffleQueue(excludeCurrentIndex) {
+        // 创建不包含当前歌曲的索引数组
+        var indices = [];
+        for (var i = 0; i < state.playlist.length; i++) {
+            if (i !== excludeCurrentIndex) {
+                indices.push(i);
+            }
+        }
+
+        // Fisher-Yates 洗牌算法
+        for (var i = indices.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = indices[i];
+            indices[i] = indices[j];
+            indices[j] = temp;
+        }
+
+        return indices;
+    }
+
+    function getNextShuffleIndex() {
+        // 如果队列为空或已播放完，重新生成队列
+        if (state.shuffleQueue.length === 0 || state.shuffleIndex >= state.shuffleQueue.length) {
+            state.shuffleQueue = generateShuffleQueue(state.currentIndex);
+            state.shuffleIndex = 0;
+        }
+
+        var nextIndex = state.shuffleQueue[state.shuffleIndex];
+        state.shuffleIndex++;
+        return nextIndex;
+    }
+
+    function getPrevShuffleIndex() {
+        // 如果在队列开头，回到上一个队列的末尾
+        if (state.shuffleIndex <= 0) {
+            state.shuffleQueue = generateShuffleQueue(state.currentIndex);
+            state.shuffleIndex = state.shuffleQueue.length;
+        }
+
+        state.shuffleIndex--;
+        return state.shuffleQueue[state.shuffleIndex];
+    }
 
     // ── Event helpers ────────────────────────────────────────
     function emit(name, detail) {
@@ -246,7 +293,8 @@ const managerConfigStr = JSON.stringify({
         }
         var nextIndex;
         if (state.playMode === 2) {
-            nextIndex = Math.floor(Math.random() * state.playlist.length);
+            // 使用洗牌队列获取下一首
+            nextIndex = getNextShuffleIndex();
         } else {
             nextIndex = (state.currentIndex + 1) % state.playlist.length;
         }
@@ -256,7 +304,8 @@ const managerConfigStr = JSON.stringify({
     function playPrev() {
         var prevIndex;
         if (state.playMode === 2) {
-            prevIndex = Math.floor(Math.random() * state.playlist.length);
+            // 使用洗牌队列获取上一首
+            prevIndex = getPrevShuffleIndex();
         } else {
             prevIndex = (state.currentIndex - 1 + state.playlist.length) % state.playlist.length;
         }
@@ -265,6 +314,11 @@ const managerConfigStr = JSON.stringify({
 
     function setPlayMode(mode) {
         state.playMode = mode;
+        // 切换到随机模式时，重置洗牌队列
+        if (mode === 2) {
+            state.shuffleQueue = [];
+            state.shuffleIndex = 0;
+        }
         emit('fm:mode', { playMode: mode });
     }
 
