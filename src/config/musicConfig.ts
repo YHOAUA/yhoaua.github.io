@@ -26,7 +26,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	meting: {
 		// Meting API 地址
 		// 默认使用官方 API，也可以使用自定义 API
-		api: "https://api.moeyao.cn/meting/?server=:server&type=:type&id=:id",
+		api: "https://meting.elysium-stack.cn/?server=:server&type=:type&id=:id&auth=:auth&r=:r",
 		// 音乐平台：netease=网易云音乐, tencent=QQ音乐, kugou=酷狗音乐, xiami=虾米音乐, baidu=百度音乐
 		server: "netease",
 		// 类型：song=单曲, playlist=歌单, album=专辑, search=搜索, artist=艺术家
@@ -40,7 +40,8 @@ export const musicPlayerConfig: MusicPlayerConfig = {
     fallbackApis: [
       "https://music.3e0.cn/?server=:server&type=:type&id=:id",
 			"https://api.qijieya.cn/meting/?server=:server&type=:type&id=:id",
-			"https://v.iarc.top/?type=:type&id=:id&r=:r",
+      "https://v.iarc.top/?type=:type&id=:id&r=:r",
+			"https://api.moeyao.cn/meting/?server=:server&type=:type&id=:id"
 		],
 	},
 
