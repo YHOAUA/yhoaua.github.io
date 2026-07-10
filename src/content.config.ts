@@ -36,22 +36,6 @@ const specCollection = defineCollection({
 	schema: z.object({}),
 });
 
-const projectsCollection = defineCollection({
-	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
-	schema: z.object({
-		title: z.string().optional(),
-		description: z.string().optional(),
-		category: z.string().trim().min(1),
-		tags: z.array(z.string()).optional().default([]),
-		date: z.date().optional(),
-		status: z.enum(["active", "maintained", "archived"]).optional(),
-		techStack: z.array(z.string()).optional().default([]),
-		demoUrl: z.url().optional(),
-		repoUrl: z.url().optional(),
-		draft: z.boolean().optional().default(false),
-	}),
-});
-
 const charactersCollection = defineCollection({
 	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/characters" }),
 	schema: z.object({
@@ -78,6 +62,5 @@ const charactersCollection = defineCollection({
 export const collections = {
 	posts: postsCollection,
 	spec: specCollection,
-	projects: projectsCollection,
 	characters: charactersCollection,
 };

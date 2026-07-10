@@ -137,8 +137,6 @@ export const siteConfig: SiteConfig = {
 		bangumi: true,
 		// 相册页面开关
 		gallery: true,
-		// 项目页面开关
-		projects: true,
 	},
 
 	// 文章列表布局配置
