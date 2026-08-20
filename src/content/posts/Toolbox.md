@@ -9,9 +9,11 @@ draft: false
 ---
 ## 信息途径
 ### 节目
-- [八分半](https://www.youtube.com/@8fenban) / 书籍，电影，音乐以及社会文化的杂谈
+- [八分半](https://www.youtube.com/@8fenban)
+- [一千零一夜](https://www.youtube.com/watch?v=csE5CV-rhIc&list=PLATwx1z00HsdanKZcTMQEc-n_Bhu_aZ76&index=208)
+- [一千零一夜书单](https://www.douban.com/doulist/44717965/?start=0&sort=seq&playable=0&sub_type=)
+- [八分](https://open.spotify.com/show/3vU3mHs2twLhYvyh0Nr3hM)
 - 锵锵三人行
-- 
 
 
 ## 软件工具
